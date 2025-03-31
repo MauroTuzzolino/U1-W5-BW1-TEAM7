@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/resultsPage.css">
+    <title>Results</title>
+</head>
+
+<body>
+    <div>
+        <img id="logo" src="./assets/img/epicode_logo.png" alt="logo epicode">
+    </div>
+
+    <div class="content">
+        <div class="header">
+            <h1>Results</h1>
+            <p>The summary of your answers:</p>
+        </div>
+
+
+        <div class="main">
+            <div class="result-block">
+                <h2>Correct</h2>
+                <h2 id="correct-percentage">66.7%</h2>
+                <p id="correct-questions"><span>4/6</span> questions</p>
+            </div>
+
+            <div class="result-block">
+                <div class="donut">
+                    <div class="donut-center">
+                        <h3 id="donut-title">Congratulations!</h3>
+                        <h3 id="donut-result">You passed the exam.</h3>
+                        <p id="donut-para">We'll send you the certificate in few minutes. Check your email
+                            (including promotions / spam folder)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-block">
+                <h2>Wrong</h2>
+                <h2 id="wrong-percentage">33.3%</h2>
+                <p id="wrong-questions"><span>2/6</span> questions</p>
+            </div>
+        </div>
+        <div id="button-div">
+            <button id="send-button">RATE US</button>
+        </div>
+    </div>
+</body>
+
+</html>
