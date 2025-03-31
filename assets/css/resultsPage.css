@@ -1,0 +1,43 @@
+#logo {
+  width: 200px;
+}
+
+.content {
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+}
+
+.main {
+  text-align: center;
+}
+
+.result-block {
+  display: inline-block;
+  width: 33%;
+}
+
+.donut {
+  display: inline-block;
+  width: 33%;
+  height: 319px;
+  background: conic-gradient(magenta 0% 33%, cyan 33% 100%);
+  border-radius: 50%;
+}
+
+.donut-center {
+  background-image: url(../img/bg.jpg);
+  border-radius: 50%;
+  width: 80%;
+  height: 80%;
+  position: relative;
+  top: 10%;
+  left: 10%;
+  padding: 0.5rem;
+}
+
+#button-div {
+  text-align: center;
+}
