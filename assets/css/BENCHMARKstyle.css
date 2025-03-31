@@ -1,0 +1,91 @@
+#logoContainer {
+  display: inline-block;
+  padding: 60px 0px 0px 10%;
+}
+
+#logoContainer img {
+  height: 50px;
+}
+
+#benchmarkTimerContainer {
+  float: right;
+  width: 200px;
+  height: 200px;
+  margin: 60px 120px 0px 0px;
+  text-align: center;
+  border: 15px solid #00ffff;
+  border-radius: 150px;
+}
+
+#benchmarkTimer {
+  font-size: 3rem;
+  padding: 20px;
+  border-radius: 10px;
+  animation: fadeIn 2s ease-in-out;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.benchmarkTimer span {
+  font-size: 15px;
+  font-weight: 300;
+  display: block;
+  line-height: 30px;
+}
+
+#seconds {
+  font-weight: 600;
+  font-size: 50px;
+}
+
+main {
+  margin-top: 200px;
+  text-align: center;
+}
+
+main h1 {
+  font-size: 50px;
+  max-width: 700px;
+  margin: auto;
+  margin-bottom: 80px;
+}
+
+#benchmarkButtonsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 100%;
+  margin: 20px 25% 150px 25%;
+  place-items: center;
+}
+
+.benchamarkAnswerButton {
+  font-size: 30px;
+  color: white;
+  background-color: #23294f;
+  border-radius: 50px;
+  border: 3px solid transparent;
+  background: linear-gradient(#23294f, #23294f) padding-box, linear-gradient(0deg, rgba(66, 66, 66, 1) 25%, rgba(255, 255, 255, 1) 100%) border-box;
+  overflow: hidden;
+  width: 90%;
+  height: 80px;
+}
+
+.benchamarkAnswerButton:hover {
+  background-color: #b00087;
+  background: linear-gradient(#b00087, #b00087) padding-box, linear-gradient(0deg, rgba(185, 21, 146, 1) 35%, rgba(255, 255, 255, 1) 100%) border-box;
+}
+
+footer {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 100;
+  letter-spacing: 3px;
+}
+
+footer span {
+  color: #b51289;
+}
