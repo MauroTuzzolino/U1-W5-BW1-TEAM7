@@ -1,0 +1,120 @@
+#logo {
+  width: 10%;
+  margin-left: 13rem;
+  margin-top: 2rem;
+}
+
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.header p {
+  margin: 0;
+  margin-bottom: 2rem;
+}
+
+.main {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.result-block {
+  display: inline-block;
+  width: 22%;
+  vertical-align: middle;
+  aspect-ratio: 1/0.5;
+}
+
+.result-block:nth-child(1) {
+  text-align: left;
+}
+
+.result-block:nth-child(1) h2 {
+  font-weight: 500;
+}
+
+#correct-percentage {
+  font-weight: 700;
+}
+
+#correct-questions {
+  font-size: 0.7rem;
+  font-weight: 300;
+}
+
+.result-block:nth-child(3) {
+  text-align: right;
+}
+
+.result-block:nth-child(3) h2 {
+  font-weight: 500;
+}
+
+#wrong-percentage {
+  font-weight: 700;
+}
+
+#wrong-questions {
+  font-size: 0.7rem;
+  font-weight: 300;
+}
+
+.result-block h2,
+h3,
+p {
+  margin: 0;
+}
+
+.donut {
+  aspect-ratio: 1/1;
+  /* diventera una variabile */
+  background: conic-gradient(#d20094 0% 33%, #00ffff 33% 100%);
+  border-radius: 50%;
+}
+
+.donut-center {
+  background-image: url(../img/bg.jpg);
+  background-position: center;
+  border-radius: 50%;
+  width: 75%;
+  height: 75%;
+  position: relative;
+  top: 13%;
+  left: 13%;
+  padding: 0.5rem;
+}
+
+#donut-title {
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+#donut-result {
+  margin-bottom: 1rem;
+  /* diventera una variabile */
+  color: #00ffff;
+  font-size: 1rem;
+}
+
+#donut-para {
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+
+#button-div {
+  text-align: center;
+}
+
+#send-button {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: large;
+  padding: 1rem 3rem;
+  font-weight: bold;
+}
