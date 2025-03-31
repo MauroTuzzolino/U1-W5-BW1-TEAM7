@@ -9,10 +9,35 @@
 
 #benchmarkTimerContainer {
   float: right;
-  min-width: 300px;
-  min-height: 300px;
+  width: 200px;
+  height: 200px;
   margin: 60px 120px 0px 0px;
   text-align: center;
+  border: 15px solid #00ffff;
+  border-radius: 150px;
+}
+
+#benchmarkTimer {
+  font-size: 3rem;
+  padding: 20px;
+  border-radius: 10px;
+  animation: fadeIn 2s ease-in-out;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.benchmarkTimer span {
+  font-size: 15px;
+  font-weight: 300;
+  display: block;
+  line-height: 30px;
+}
+
+#seconds {
+  font-weight: 600;
+  font-size: 50px;
 }
 
 main {
