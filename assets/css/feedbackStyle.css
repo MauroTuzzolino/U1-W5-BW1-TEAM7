@@ -26,12 +26,12 @@ form {
   overflow-x: auto;
   width: 600px;
   resize: none;
-  vertical-align: bottom;
 }
 #star-rating {
   font-size: 4rem;
   margin-bottom: 4rem;
   margin-top: -1rem;
+  color: #0f1755;
 }
 #star-rating span {
   margin: -0.3rem;
