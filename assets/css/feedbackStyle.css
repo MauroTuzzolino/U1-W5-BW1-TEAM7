@@ -1,0 +1,51 @@
+header {
+  text-align: left;
+  margin-left: 20%;
+}
+
+body {
+  text-align: center;
+}
+h1 {
+  font-size: 3rem;
+  margin-bottom: 0;
+}
+p {
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+form {
+  font-family: "Poppins", sans-serif;
+}
+#comment {
+  background: none;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid #c2128d;
+  overflow-x: auto;
+  width: 600px;
+  resize: none;
+  vertical-align: bottom;
+}
+#star-rating {
+  font-size: 4rem;
+  margin-bottom: 4rem;
+  margin-top: -1rem;
+}
+#star-rating span {
+  margin: -0.3rem;
+}
+button {
+  margin-top: 3.5rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #00ffff;
+  border: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: #00ffff;
+  box-shadow: 0 0 20px rgba(7, 240, 248, 0.8);
+}
