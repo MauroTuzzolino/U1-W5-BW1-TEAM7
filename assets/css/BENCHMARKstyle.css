@@ -47,7 +47,7 @@ main {
 
 main h1 {
   font-size: 50px;
-  max-width: 700px;
+  max-width: 100%;
   margin: auto;
   margin-bottom: 80px;
 }

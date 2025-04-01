@@ -86,58 +86,70 @@ const randomArray = function () {
   return randomNumber;
 };
 const questionCounter = document.getElementById("questionCounter");
-const questionAnswerContainer = document.getElementById("benchmarkButtonsContainer");
+const containerOfQuestionAnswerContainer = document.getElementById("containerOfBenchmarkButtonsContainer");
 const question = document.getElementById("questionH1");
 const nextQuestionButton = document.getElementById("nextQuestionButton");
+let i = 0;
 
 const testQuestionSkipper = () => {
-  for (let i = 0; i < 1; i++) {
-    question.innerText = questions[i].question;
-    questionCounter.innerText = `QUESTION ${i + 1} / 10`;
-    if (questions[i].type === "multiple") {
-      let answerButton1 = document.createElement("button");
-      let answerButton2 = document.createElement("button");
-      let answerButton3 = document.createElement("button");
-      let answerButton4 = document.createElement("button");
+  question.innerText = questions[i].question;
+  questionCounter.innerText = `QUESTION ${i + 1} / 10`;
+  containerOfQuestionAnswerContainer.innerHTML = "";
 
-      answerButton1.classList.add("benchmarkAnswerButton");
-      answerButton2.classList.add("benchmarkAnswerButton");
-      answerButton3.classList.add("benchmarkAnswerButton");
-      answerButton4.classList.add("benchmarkAnswerButton");
-      answerButton1.id = "benchmarkAnswerButton1";
-      answerButton2.id = "benchmarkAnswerButton2";
-      answerButton3.id = "benchmarkAnswerButton3";
-      answerButton4.id = "benchmarkAnswerButton4";
+  if (questions[i].type === "multiple") {
+    let answerButton1 = document.createElement("button");
+    let answerButton2 = document.createElement("button");
+    let answerButton3 = document.createElement("button");
+    let answerButton4 = document.createElement("button");
+    let questionAnswerContainer = document.createElement("div");
 
-      answerButton1.innerText = questions[i].correct_answer;
-      answerButton2.innerText = questions[i].incorrect_answers[0];
-      answerButton3.innerText = questions[i].incorrect_answers[1];
-      answerButton4.innerText = questions[i].incorrect_answers[2];
+    answerButton1.classList.add("benchmarkAnswerButton");
+    answerButton2.classList.add("benchmarkAnswerButton");
+    answerButton3.classList.add("benchmarkAnswerButton");
+    answerButton4.classList.add("benchmarkAnswerButton");
+    answerButton1.id = "benchmarkAnswerButton1";
+    answerButton2.id = "benchmarkAnswerButton2";
+    answerButton3.id = "benchmarkAnswerButton3";
+    answerButton4.id = "benchmarkAnswerButton4";
+    questionAnswerContainer.id = "benchmarkButtonsContainer";
 
-      questionAnswerContainer.appendChild(answerButton1);
-      questionAnswerContainer.appendChild(answerButton2);
-      questionAnswerContainer.appendChild(answerButton3);
-      questionAnswerContainer.appendChild(answerButton4);
-    } else {
-      let answerButtonBoolean1 = document.createElement("button");
-      let answerButtonBoolean2 = document.createElement("button");
+    answerButton1.innerText = questions[i].correct_answer;
+    answerButton2.innerText = questions[i].incorrect_answers[0];
+    answerButton3.innerText = questions[i].incorrect_answers[1];
+    answerButton4.innerText = questions[i].incorrect_answers[2];
 
-      answerButtonBoolean1.classList.add("benchmarkAnswerButton");
-      answerButtonBoolean2.classList.add("benchmarkAnswerButton");
-      answerButtonBoolean1.id = "benchmarkAnswerButton1";
-      answerButtonBoolean2.id = "benchmarkAnswerButton2";
+    containerOfQuestionAnswerContainer.appendChild(questionAnswerContainer);
+    questionAnswerContainer.appendChild(answerButton1);
+    questionAnswerContainer.appendChild(answerButton2);
+    questionAnswerContainer.appendChild(answerButton3);
+    questionAnswerContainer.appendChild(answerButton4);
+  } else {
+    let answerButtonBoolean1 = document.createElement("button");
+    let answerButtonBoolean2 = document.createElement("button");
+    let questionAnswerContainer = document.createElement("div");
 
-      answerButtonBoolean1.innerText = questions[i].correct_answer;
-      answerButtonBoolean2.innerText = questions[i].incorrect_answers[0];
-      //console.log(answerButtonBoolean1);
-      console.log(questionAnswerContainer);
-      questionAnswerContainer.appendChild(answerButtonBoolean1);
-      console.log(questionAnswerContainer);
-      questionAnswerContainer.appendChild(answerButtonBoolean2);
-    }
+    answerButtonBoolean1.classList.add("benchmarkAnswerButton");
+    answerButtonBoolean2.classList.add("benchmarkAnswerButton");
+    answerButtonBoolean1.id = "benchmarkAnswerButton1";
+    answerButtonBoolean2.id = "benchmarkAnswerButton2";
+    questionAnswerContainer.id = "benchmarkButtonsContainer";
+
+    answerButtonBoolean1.innerText = questions[i].correct_answer;
+    answerButtonBoolean2.innerText = questions[i].incorrect_answers[0];
+    //console.log(answerButtonBoolean1);
+    //console.log(questionAnswerContainer);
+    containerOfQuestionAnswerContainer.appendChild(questionAnswerContainer);
+    questionAnswerContainer.appendChild(answerButtonBoolean1);
+    //console.log(questionAnswerContainer);
+    questionAnswerContainer.appendChild(answerButtonBoolean2);
   }
 };
 
 window.addEventListener("DOMContentLoaded", function () {
+  testQuestionSkipper();
+});
+
+nextQuestionButton.addEventListener("click", function () {
+  i++;
   testQuestionSkipper();
 });
