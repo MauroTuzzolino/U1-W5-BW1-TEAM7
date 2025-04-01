@@ -1,12 +1,3 @@
-const proceedForm = document.getElementById("proceedForm");
-const proceedButton = document.getElementById("proceedButton");
-proceedForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-  window.location.href = "benchmark-page.html";
-});
-
-/////////////////////// HOME JAVASCRIPT////////////////////////////////////////
-
 const questions = [
   {
     category: "Science: Computers",
@@ -95,14 +86,15 @@ const randomArray = function () {
   return randomNumber;
 };
 const questionCounter = document.getElementById("questionCounter");
-const questionAnswerContainer = document.getElementById("questionAnswerContainer");
-const question = getElementById("question");
+const questionAnswerContainer = document.getElementById("benchmarkButtonsContainer");
+const question = document.getElementById("questionH1");
+const nextQuestionButton = document.getElementById("nextQuestionButton");
 
 const testQuestionSkipper = () => {
-  for (let i = 0; i < questions.length; i++) {
+  for (let i = 0; i < 1; i++) {
     question.innerText = questions[i].question;
     questionCounter.innerText = `QUESTION ${i + 1} / 10`;
-    if (questions.type === "multiple") {
+    if (questions[i].type === "multiple") {
       let answerButton1 = document.createElement("button");
       let answerButton2 = document.createElement("button");
       let answerButton3 = document.createElement("button");
@@ -117,34 +109,35 @@ const testQuestionSkipper = () => {
       answerButton3.id = "benchmarkAnswerButton3";
       answerButton4.id = "benchmarkAnswerButton4";
 
-      answerButton1.innerText = question[i].correct_answer;
-      answerButton2.innerText = question[i].incorrect_answers[0];
-      answerButton3.innerText = question[i].incorrect_answers[1];
-      answerButton4.innerText = question[i].incorrect_answers[2];
+      answerButton1.innerText = questions[i].correct_answer;
+      answerButton2.innerText = questions[i].incorrect_answers[0];
+      answerButton3.innerText = questions[i].incorrect_answers[1];
+      answerButton4.innerText = questions[i].incorrect_answers[2];
 
       questionAnswerContainer.appendChild(answerButton1);
       questionAnswerContainer.appendChild(answerButton2);
       questionAnswerContainer.appendChild(answerButton3);
       questionAnswerContainer.appendChild(answerButton4);
     } else {
-      let answerButton1 = document.createElement("button");
-      let answerButton2 = document.createElement("button");
+      let answerButtonBoolean1 = document.createElement("button");
+      let answerButtonBoolean2 = document.createElement("button");
 
-      answerButton1.classList.add("benchmarkAnswerButton");
-      answerButton2.classList.add("benchmarkAnswerButton");
-      answerButton1.id = "benchmarkAnswerButton1";
-      answerButton2.id = "benchmarkAnswerButton2";
+      answerButtonBoolean1.classList.add("benchmarkAnswerButton");
+      answerButtonBoolean2.classList.add("benchmarkAnswerButton");
+      answerButtonBoolean1.id = "benchmarkAnswerButton1";
+      answerButtonBoolean2.id = "benchmarkAnswerButton2";
 
-      answerButton1.innerText = question[i].correct_answer;
-      answerButton2.innerText = question[i].incorrect_answers[0];
-
-      questionAnswerContainer.appendChild(answerButton1);
-      questionAnswerContainer.appendChild(answerButton2);
+      answerButtonBoolean1.innerText = questions[i].correct_answer;
+      answerButtonBoolean2.innerText = questions[i].incorrect_answers[0];
+      //console.log(answerButtonBoolean1);
+      console.log(questionAnswerContainer);
+      questionAnswerContainer.appendChild(answerButtonBoolean1);
+      console.log(questionAnswerContainer);
+      questionAnswerContainer.appendChild(answerButtonBoolean2);
     }
   }
 };
 
 window.addEventListener("DOMContentLoaded", function () {
-  proceedForm.removeEventListener();
   testQuestionSkipper();
 });

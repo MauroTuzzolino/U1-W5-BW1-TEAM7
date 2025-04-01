@@ -62,7 +62,7 @@ main h1 {
   place-items: center;
 }
 
-.benchamarkAnswerButton {
+.benchmarkAnswerButton {
   font-size: 30px;
   color: white;
   background-color: #23294f;
@@ -74,9 +74,13 @@ main h1 {
   height: 80px;
 }
 
-.benchamarkAnswerButton:hover {
+.benchmarkAnswerButton:hover {
   background-color: #b00087;
   background: linear-gradient(#b00087, #b00087) padding-box, linear-gradient(0deg, rgba(185, 21, 146, 1) 35%, rgba(255, 255, 255, 1) 100%) border-box;
+}
+
+#nextQuestionButton {
+  max-width: 300px;
 }
 
 footer {
@@ -84,6 +88,13 @@ footer {
   font-size: 25px;
   font-weight: 100;
   letter-spacing: 3px;
+}
+
+footer h5 {
+  display: inline-block;
+  max-width: 100%;
+  margin-left: 29rem;
+  margin-right: 10rem;
 }
 
 footer span {
