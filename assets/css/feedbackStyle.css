@@ -37,11 +37,11 @@ form {
 }
 
 #star-rating span.selected {
-  color: gold;
+  color: #00ffff;
 }
 
 #star-rating span.hover {
-  color: gold;
+  color: #00ffff;
 }
 
 button {

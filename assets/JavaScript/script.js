@@ -81,10 +81,27 @@ const questions = [
   },
 ];
 
-/*const randomArray = function () {
-  let randomNumber = Math.floor(Math.random() * 10);
-  return randomNumber;
-};*/
+const allAnswer = [];
+for (let i = 0; i < questions.length; i++) {
+  questions[i].incorrect_answers.push(questions[i].correct_answer);
+  allAnswer.push(questions[i].incorrect_answers);
+}
+//console.log(allAnswer);
+
+const randomArrayPosition = function (arry) {
+  const newArry = [];
+  const numArry = [];
+  for (let i = 0; i < arry.length; i++) {
+    numArry.push(i);
+  }
+  for (let i = 0; i < arry.length; i++) {
+    let randNum = Math.floor(Math.random() * numArry.length);
+    let num = numArry[randNum];
+    newArry.push(arry[num]);
+    numArry.splice(randNum, 1);
+  }
+  return newArry;
+};
 
 const questionCounter = document.getElementById("questionCounter");
 const containerOfQuestionAnswerContainer = document.getElementById("containerOfBenchmarkButtonsContainer");
@@ -92,10 +109,11 @@ const question = document.getElementById("questionH1");
 const nextQuestionButton = document.getElementById("nextQuestionButton");
 let i = 0;
 
-const testQuestionSkipper = () => {
+const testQuestionSkipper = function () {
   question.innerText = questions[i].question;
   questionCounter.innerText = `QUESTION ${i + 1} / 10`;
   containerOfQuestionAnswerContainer.innerHTML = "";
+  const rAP = randomArrayPosition(allAnswer[i]);
 
   if (questions[i].type === "multiple") {
     let answerButton1 = document.createElement("button");
@@ -143,10 +161,10 @@ const testQuestionSkipper = () => {
       answerButton4.classList.add("clickedButton");
     });
 
-    answerButton1.innerText = questions[i].correct_answer;
-    answerButton2.innerText = questions[i].incorrect_answers[0];
-    answerButton3.innerText = questions[i].incorrect_answers[1];
-    answerButton4.innerText = questions[i].incorrect_answers[2];
+    answerButton1.innerText = rAP[0];
+    answerButton2.innerText = rAP[1];
+    answerButton3.innerText = rAP[2];
+    answerButton4.innerText = rAP[3];
 
     containerOfQuestionAnswerContainer.appendChild(questionAnswerContainer);
     questionAnswerContainer.appendChild(answerButton1);
@@ -175,8 +193,8 @@ const testQuestionSkipper = () => {
       answerButtonBoolean2.classList.add("clickedButton");
     });
 
-    answerButtonBoolean1.innerText = questions[i].correct_answer;
-    answerButtonBoolean2.innerText = questions[i].incorrect_answers[0];
+    answerButtonBoolean1.innerText = "True";
+    answerButtonBoolean2.innerText = "False";
     //console.log(answerButtonBoolean1);
     //console.log(questionAnswerContainer);
     containerOfQuestionAnswerContainer.appendChild(questionAnswerContainer);
@@ -190,8 +208,8 @@ let correctAnswerCounter = 0;
 
 const verifyAnswer = function () {
   let choosenAnswer = document.querySelector(".clickedButton");
-  console.log(questions[i].correct_answer);
-  console.log(choosenAnswer);
+  //console.log(questions[i].correct_answer);
+  //console.log(choosenAnswer);
   if (choosenAnswer.innerText === questions[i].correct_answer) {
     correctAnswerCounter++;
   }
@@ -199,15 +217,36 @@ const verifyAnswer = function () {
 
 nextQuestionButton.addEventListener("click", function () {
   verifyAnswer();
-  console.log(correctAnswerCounter);
+  counter = 60;
+  //console.log(correctAnswerCounter);
   i++;
   if (i === 10) {
     window.location.href = "resultsPage.html";
   }
-
   testQuestionSkipper();
 });
 
 window.addEventListener("DOMContentLoaded", function () {
   testQuestionSkipper();
 });
+
+const colorChanging = document.getElementById("benchmarkTimerContainer");
+const seconds = document.getElementById("seconds");
+let counter = 60;
+
+setInterval(() => {
+  counter--;
+  colorChanging.style.borderImage = `linear-gradient(#23294f, #23294f) padding-box, conic-gradient(#00ffff 0% ${(counter / 60) * 100}%, white ${
+    (counter / 60) * 100
+  }% 100%) border-box;`;
+  //console.log(counter);
+  seconds.innerText = counter;
+  if (counter === 0) {
+    i++;
+    if (i === 10) {
+      window.location.href = "resultsPage.html";
+    }
+    testQuestionSkipper();
+    counter = 60;
+  }
+}, 1000);
