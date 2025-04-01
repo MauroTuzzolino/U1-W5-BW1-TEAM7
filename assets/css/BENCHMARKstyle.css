@@ -15,6 +15,8 @@
   text-align: center;
   border: 15px solid;
   border-radius: 150px;
+  color: black;
+  border-color: #23294f;
 }
 
 #benchmarkTimer {
@@ -67,7 +69,8 @@ main h1 {
   background-color: #23294f;
   border-radius: 50px;
   border: 3px solid transparent;
-  background: linear-gradient(#23294f, #23294f) padding-box, linear-gradient(0deg, rgba(66, 66, 66, 1) 25%, rgba(255, 255, 255, 1) 100%) border-box;
+  background: linear-gradient(#23294f, #23294f) padding-box,
+    linear-gradient(0deg, rgba(66, 66, 66, 1) 25%, rgba(255, 255, 255, 1) 100%) border-box;
   overflow: hidden;
   width: 90%;
   height: 80px;
@@ -75,12 +78,14 @@ main h1 {
 
 .benchmarkAnswerButton:hover {
   background-color: #b00087;
-  background: linear-gradient(#b00087, #b00087) padding-box, linear-gradient(0deg, rgba(185, 21, 146, 1) 35%, rgba(255, 255, 255, 1) 100%) border-box;
+  background: linear-gradient(#b00087, #b00087) padding-box,
+    linear-gradient(0deg, rgba(185, 21, 146, 1) 35%, rgba(255, 255, 255, 1) 100%) border-box;
 }
 
 .clickedButton {
   background-color: #b00087;
-  background: linear-gradient(#b00087, #b00087) padding-box, linear-gradient(0deg, rgba(185, 21, 146, 1) 35%, rgba(255, 255, 255, 1) 100%) border-box;
+  background: linear-gradient(#b00087, #b00087) padding-box,
+    linear-gradient(0deg, rgba(185, 21, 146, 1) 35%, rgba(255, 255, 255, 1) 100%) border-box;
 }
 
 #nextQuestionButton {

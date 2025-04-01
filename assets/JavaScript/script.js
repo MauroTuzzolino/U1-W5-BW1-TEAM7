@@ -11,7 +11,8 @@ const questions = [
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question: "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
+    question:
+      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
     correct_answer: "Final",
     incorrect_answers: ["Static", "Private", "Public"],
   },
@@ -27,7 +28,8 @@ const questions = [
     category: "Science: Computers",
     type: "boolean",
     difficulty: "easy",
-    question: "Pointers were not used in the original C programming language; they were added later on in C++.",
+    question:
+      "Pointers were not used in the original C programming language; they were added later on in C++.",
     correct_answer: "False",
     incorrect_answers: ["True"],
   },
@@ -104,7 +106,9 @@ const randomArrayPosition = function (arry) {
 };
 
 const questionCounter = document.getElementById("questionCounter");
-const containerOfQuestionAnswerContainer = document.getElementById("containerOfBenchmarkButtonsContainer");
+const containerOfQuestionAnswerContainer = document.getElementById(
+  "containerOfBenchmarkButtonsContainer"
+);
 const question = document.getElementById("questionH1");
 const nextQuestionButton = document.getElementById("nextQuestionButton");
 let i = 0;
@@ -236,12 +240,17 @@ let counter = 60;
 
 setInterval(() => {
   counter--;
-  colorChanging.style.borderImage = `conic-gradient(#00ffff 0% ${(counter / 60) * 100}%, white ${(counter / 60) * 100}% 100%)1`;
-  // colorChanging.setAttribute(
-  //   "style",
-  //   "border: conic-gradient(#23294f, #23294f) padding-box, conic-gradient(0deg, rgba(66, 66, 66, 1) 25%, rgb(246, 6, 6) 100%)1 border-box;"
-  // );
-  //console.log(counter);
+  const stefano = (counter / 60) * 180;
+  const dynamicColor = `hsl(${stefano}, 100%, 50%)`;
+
+  colorChanging.style.background = `conic-gradient(${dynamicColor} 0% ${
+    (counter / 60) * 100
+  }%, white ${(counter / 60) * 100}% 100%)`;
+
+  colorChanging.style.borderRadius = "50%";
+  colorChanging.style.padding = "10px";
+  colorChanging.style.boxSizing = "border-box";
+
   seconds.innerText = counter;
   if (counter === 0) {
     i++;
