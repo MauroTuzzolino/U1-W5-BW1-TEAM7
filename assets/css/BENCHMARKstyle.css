@@ -18,12 +18,12 @@
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask-composite: exclude;
   margin-left: 75%;
-  margin-top: 11rem;
+  margin-top: 4rem;
 }
 #benchmarkTimerContainer {
   width: 200px;
   height: 200px;
-  margin: 60px 120px 0px 0px;
+  margin: -47px 120px 0px 0px;
   text-align: center;
   margin-left: 75%;
 }
@@ -51,7 +51,7 @@
 }
 
 main {
-  margin-top: 150px;
+  margin-top: 80px;
   text-align: center;
 }
 
