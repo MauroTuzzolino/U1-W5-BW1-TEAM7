@@ -230,15 +230,13 @@ window.addEventListener("DOMContentLoaded", function () {
   testQuestionSkipper();
 });
 
-const colorChanging = document.getElementById("benchmarkTimerContainer");
+const colorChanging = document.getElementById("colorChanging");
 const seconds = document.getElementById("seconds");
 let counter = 60;
 
 setInterval(() => {
   counter--;
-  colorChanging.style.borderImage = `linear-gradient(#23294f, #23294f) padding-box, conic-gradient(#00ffff 0% ${(counter / 60) * 100}%, white ${
-    (counter / 60) * 100
-  }% 100%) border-box;`;
+  colorChanging.setAttribute("style", `background: conic-gradient(#00ffff 0% ${100 - (counter / 60) * 100}%, white ${100 - (counter / 60) * 100}% 100%)`);
   //console.log(counter);
   seconds.innerText = counter;
   if (counter === 0) {
