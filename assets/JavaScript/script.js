@@ -210,14 +210,18 @@ const verifyAnswer = function () {
   let choosenAnswer = document.querySelector(".clickedButton");
   //console.log(questions[i].correct_answer);
   //console.log(choosenAnswer);
-  if (choosenAnswer.innerText === questions[i].correct_answer) {
-    correctAnswerCounter++;
+  if (!choosenAnswer) {
+    return;
+  } else {
+    if (choosenAnswer.innerText === questions[i].correct_answer) {
+      correctAnswerCounter++;
+    }
   }
 };
 
 nextQuestionButton.addEventListener("click", function () {
   verifyAnswer();
-  counter = 60;
+  counter = 61;
   //console.log(correctAnswerCounter);
   i++;
   if (i === 10) {
@@ -232,19 +236,19 @@ window.addEventListener("DOMContentLoaded", function () {
 
 const colorChanging = document.getElementById("colorChanging");
 const seconds = document.getElementById("seconds");
-let counter = 60;
+let counter = 61;
 
 setInterval(() => {
   counter--;
   colorChanging.setAttribute("style", `background: conic-gradient(#00ffff 0% ${100 - (counter / 60) * 100}%, white ${100 - (counter / 60) * 100}% 100%)`);
   //console.log(counter);
   seconds.innerText = counter;
-  if (counter === 0) {
+  if (counter === 1) {
     i++;
     if (i === 10) {
       window.location.href = "resultsPage.html";
     }
     testQuestionSkipper();
-    counter = 60;
+    counter = 61;
   }
 }, 1000);
