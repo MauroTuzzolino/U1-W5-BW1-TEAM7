@@ -236,9 +236,11 @@ let counter = 60;
 
 setInterval(() => {
   counter--;
-  colorChanging.style.borderImage = `linear-gradient(#23294f, #23294f) padding-box, conic-gradient(#00ffff 0% ${(counter / 60) * 100}%, white ${
-    (counter / 60) * 100
-  }% 100%) border-box;`;
+  colorChanging.style.borderImage = `conic-gradient(#00ffff 0% ${(counter / 60) * 100}%, white ${(counter / 60) * 100}% 100%)1`;
+  // colorChanging.setAttribute(
+  //   "style",
+  //   "border: conic-gradient(#23294f, #23294f) padding-box, conic-gradient(0deg, rgba(66, 66, 66, 1) 25%, rgb(246, 6, 6) 100%)1 border-box;"
+  // );
   //console.log(counter);
   seconds.innerText = counter;
   if (counter === 0) {
