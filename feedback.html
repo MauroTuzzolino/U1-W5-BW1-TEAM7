@@ -32,6 +32,43 @@
         </div>
       </form>
     </form>
+    <script>
+      const stars = document.querySelectorAll("#star-rating span");
+      let currentRating = 0;
+
+      function updateRating(rating) {
+        for (let i = 0; i < stars.length; i++) {
+          const star = stars[i];
+          if (parseInt(star.getAttribute("data-value")) <= rating) {
+            star.classList.add("selected");
+          } else {
+            star.classList.remove("selected");
+          }
+        }
+      }
+
+      for (let i = 0; i < stars.length; i++) {
+        const star = stars[i];
+
+        star.addEventListener("mouseover", function () {
+          const rating = parseInt(star.getAttribute("data-value"));
+          updateRating(rating);
+          star.classList.add("hover");
+        });
+
+        star.addEventListener("mouseout", function () {
+          updateRating(currentRating);
+          for (let j = 0; j < stars.length; j++) {
+            stars[j].classList.remove("hover");
+          }
+        });
+
+        star.addEventListener("click", function () {
+          currentRating = parseInt(star.getAttribute("data-value"));
+          updateRating(currentRating);
+        });
+      }
+    </script>
     <script src="./assets/JavaScript/script.js"></script>
   </body>
 </html>

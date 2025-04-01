@@ -26,16 +26,24 @@ form {
   overflow-x: auto;
   width: 600px;
   resize: none;
+  color: white;
+  font-size: 20px;
 }
-#star-rating {
-  font-size: 4rem;
-  margin-bottom: 4rem;
-  margin-top: -1rem;
-  color: #0f1755;
-}
+
 #star-rating span {
-  margin: -0.3rem;
+  font-size: 4rem;
+  color: gray;
+  cursor: pointer;
 }
+
+#star-rating span.selected {
+  color: gold;
+}
+
+#star-rating span.hover {
+  color: gold;
+}
+
 button {
   margin-top: 3.5rem;
   padding-right: 2rem;

@@ -81,10 +81,11 @@ const questions = [
   },
 ];
 
-const randomArray = function () {
+/*const randomArray = function () {
   let randomNumber = Math.floor(Math.random() * 10);
   return randomNumber;
-};
+};*/
+
 const questionCounter = document.getElementById("questionCounter");
 const containerOfQuestionAnswerContainer = document.getElementById("containerOfBenchmarkButtonsContainer");
 const question = document.getElementById("questionH1");
@@ -151,5 +152,8 @@ window.addEventListener("DOMContentLoaded", function () {
 
 nextQuestionButton.addEventListener("click", function () {
   i++;
+  if (i === 10) {
+    window.location.href = "resultsPage.html";
+  }
   testQuestionSkipper();
 });
