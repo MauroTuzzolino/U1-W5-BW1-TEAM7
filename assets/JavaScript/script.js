@@ -11,7 +11,7 @@ const questions = [
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question: "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
+    question: "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
     correct_answer: "Final",
     incorrect_answers: ["Static", "Private", "Public"],
   },
@@ -114,6 +114,35 @@ const testQuestionSkipper = () => {
     answerButton4.id = "benchmarkAnswerButton4";
     questionAnswerContainer.id = "benchmarkButtonsContainer";
 
+    answerButton1.addEventListener("click", function () {
+      answerButton1.classList.remove("clickedButton");
+      answerButton2.classList.remove("clickedButton");
+      answerButton3.classList.remove("clickedButton");
+      answerButton4.classList.remove("clickedButton");
+      answerButton1.classList.add("clickedButton");
+    });
+    answerButton2.addEventListener("click", function () {
+      answerButton1.classList.remove("clickedButton");
+      answerButton2.classList.remove("clickedButton");
+      answerButton3.classList.remove("clickedButton");
+      answerButton4.classList.remove("clickedButton");
+      answerButton2.classList.add("clickedButton");
+    });
+    answerButton3.addEventListener("click", function () {
+      answerButton1.classList.remove("clickedButton");
+      answerButton2.classList.remove("clickedButton");
+      answerButton3.classList.remove("clickedButton");
+      answerButton4.classList.remove("clickedButton");
+      answerButton3.classList.add("clickedButton");
+    });
+    answerButton4.addEventListener("click", function () {
+      answerButton1.classList.remove("clickedButton");
+      answerButton2.classList.remove("clickedButton");
+      answerButton3.classList.remove("clickedButton");
+      answerButton4.classList.remove("clickedButton");
+      answerButton4.classList.add("clickedButton");
+    });
+
     answerButton1.innerText = questions[i].correct_answer;
     answerButton2.innerText = questions[i].incorrect_answers[0];
     answerButton3.innerText = questions[i].incorrect_answers[1];
@@ -135,6 +164,17 @@ const testQuestionSkipper = () => {
     answerButtonBoolean2.id = "benchmarkAnswerButton2";
     questionAnswerContainer.id = "benchmarkButtonsContainer";
 
+    answerButtonBoolean1.addEventListener("click", function () {
+      answerButtonBoolean1.classList.remove("clickedButton");
+      answerButtonBoolean2.classList.remove("clickedButton");
+      answerButtonBoolean1.classList.add("clickedButton");
+    });
+    answerButtonBoolean2.addEventListener("click", function () {
+      answerButtonBoolean1.classList.remove("clickedButton");
+      answerButtonBoolean2.classList.remove("clickedButton");
+      answerButtonBoolean2.classList.add("clickedButton");
+    });
+
     answerButtonBoolean1.innerText = questions[i].correct_answer;
     answerButtonBoolean2.innerText = questions[i].incorrect_answers[0];
     //console.log(answerButtonBoolean1);
@@ -146,14 +186,28 @@ const testQuestionSkipper = () => {
   }
 };
 
-window.addEventListener("DOMContentLoaded", function () {
-  testQuestionSkipper();
-});
+let correctAnswerCounter = 0;
+
+const verifyAnswer = function () {
+  let choosenAnswer = document.querySelector(".clickedButton");
+  console.log(questions[i].correct_answer);
+  console.log(choosenAnswer);
+  if (choosenAnswer.innerText === questions[i].correct_answer) {
+    correctAnswerCounter++;
+  }
+};
 
 nextQuestionButton.addEventListener("click", function () {
+  verifyAnswer();
+  console.log(correctAnswerCounter);
   i++;
   if (i === 10) {
     window.location.href = "resultsPage.html";
   }
+
+  testQuestionSkipper();
+});
+
+window.addEventListener("DOMContentLoaded", function () {
   testQuestionSkipper();
 });
