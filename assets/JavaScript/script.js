@@ -79,16 +79,32 @@
     correct_answer: "Java",
     incorrect_answers: ["Python", "C", "Jakarta"],
   },*/
-let questions = [];
+let questions;
 const fetchQ = async () => {
   try {
     const response = await fetch(`https://opentdb.com/api.php?amount=${takeOut}&category=18&difficulty=${takeOut2}`);
     //console.log(response);
     const data = await response.json();
-    questions = await data.results;
+    questionsFullFill(data.results);
     console.log(data.results);
   } catch (error) {
     console.log(error);
+  }
+};
+
+const questionsFullFill = function (data) {
+  questions = data;
+  console.log(questions);
+  cycleFunction();
+  testQuestionSkipper();
+  timerFunction();
+};
+
+const cycleFunction = function () {
+  //console.log(questions);
+  for (let i = 0; i < questions.length; i++) {
+    questions[i].incorrect_answers.push(questions[i].correct_answer);
+    allAnswer.push(questions[i].incorrect_answers);
   }
 };
 
@@ -102,27 +118,15 @@ form.addEventListener("submit", function (e) {
   takeOut = numbOfQuestions.value;
   let radioChoice = document.querySelector('input[name="difficulty"]:checked')?.value;
   takeOut2 = radioChoice;
-  console.log(takeOut2);
+  //console.log(takeOut2);
   //cambia con la nostra
   fetchQ();
-  if (questions.length !== 0) {
-    console.log(questions);
-    cycleFunction();
-    testQuestionSkipper();
-    timerFunction();
-  }
+
+  //console.log(questions);
 });
 
-console.log(questions);
+//console.log(questions);
 const allAnswer = [];
-
-const cycleFunction = function () {
-  console.log(questions);
-  for (let i = 0; i < questions.length; i++) {
-    questions[i].incorrect_answers.push(questions[i].correct_answer);
-    allAnswer.push(questions[i].incorrect_answers);
-  }
-};
 
 //console.log(allAnswer);
 
