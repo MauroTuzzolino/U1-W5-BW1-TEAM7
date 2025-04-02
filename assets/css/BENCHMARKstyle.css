@@ -29,6 +29,7 @@
 }
 
 #benchmarkTimer {
+  display: none;
   font-size: 3rem;
   padding: 20px;
   border-radius: 10px;
@@ -113,6 +114,7 @@ footer {
   font-size: 25px;
   font-weight: 100;
   letter-spacing: 3px;
+  display: none;
 }
 
 footer h5 {
@@ -124,4 +126,100 @@ footer h5 {
 
 footer span {
   color: #b51289;
+}
+
+form {
+  font-family: Inter;
+}
+
+form p {
+  font-size: 2rem;
+}
+
+form label {
+  font-size: 1.5rem;
+}
+
+#labelEasy {
+  width: 5rem;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 400;
+  padding: 0.5rem;
+}
+
+#labelEasy:hover {
+  color: green;
+  border-color: green;
+}
+
+#labelMedium {
+  width: 5rem;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 400;
+  padding: 0.5rem;
+}
+
+#labelMedium:hover {
+  color: yellow;
+  border-color: yellow;
+}
+
+#labelHard {
+  width: 5rem;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 400;
+  padding: 0.5rem;
+}
+
+#labelHard:hover {
+  color: red;
+  border-color: red;
+}
+
+input {
+  display: none;
+}
+
+#numbOfQuestions {
+  width: 5rem;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 400;
+  padding: 0.5rem;
+}
+
+#numbOfQuestions option {
+  color: black;
+}
+
+#startGameButton {
+  display: block;
+  width: 15rem;
+  margin: auto;
+  margin-top: 2rem;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: large;
+  font-weight: bold;
+  padding: 0.5rem;
 }
