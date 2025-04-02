@@ -1,11 +1,20 @@
 header {
   text-align: left;
   margin-left: 20%;
+  padding-top: 2rem;
 }
 
 body {
   text-align: center;
 }
+
+main {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 20%);
+}
+
 h1 {
   font-size: 3rem;
   margin-bottom: 0;
