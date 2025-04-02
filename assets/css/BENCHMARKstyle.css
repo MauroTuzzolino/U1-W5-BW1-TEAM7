@@ -94,6 +94,16 @@ main h1 {
   background: linear-gradient(#b00087, #b00087) padding-box, linear-gradient(0deg, rgba(185, 21, 146, 1) 35%, rgba(255, 255, 255, 1) 100%) border-box;
 }
 
+.correctAnswer {
+  background-color: seagreen;
+  background: linear-gradient(seagreen, seagreen) padding-box, linear-gradient(0deg, rgb(4, 54, 10) 35%, rgba(255, 255, 255, 1) 100%) border-box;
+}
+
+.wrongAnswer {
+  background-color: crimson;
+  background: linear-gradient(crimson, crimson) padding-box, linear-gradient(0deg, rgb(114, 7, 7) 35%, rgba(255, 255, 255, 1) 100%) border-box;
+}
+
 #nextQuestionButton {
   max-width: 300px;
 }

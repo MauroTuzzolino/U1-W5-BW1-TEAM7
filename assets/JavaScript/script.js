@@ -222,13 +222,21 @@ const verifyAnswer = function () {
 
 nextQuestionButton.addEventListener("click", function () {
   verifyAnswer();
+  let choosenAnswer = document.querySelector(".clickedButton");
+  if (choosenAnswer.innerText === questions[i].correct_answer) {
+    choosenAnswer.classList.add("correctAnswer");
+  } else {
+    choosenAnswer.classList.add("wrongAnswer");
+  }
   counter = 60;
   //console.log(correctAnswerCounter);
   i++;
   if (i === 10) {
     window.location.href = "resultsPage.html";
   }
-  testQuestionSkipper();
+  setTimeout(() => {
+    testQuestionSkipper();
+  }, 500);
 });
 
 const colorChanging = document.getElementById("colorChanging");
