@@ -221,7 +221,7 @@ const verifyAnswer = function () {
 
 nextQuestionButton.addEventListener("click", function () {
   verifyAnswer();
-  counter = 61;
+  counter = 60;
   //console.log(correctAnswerCounter);
   i++;
   if (i === 10) {
@@ -236,19 +236,19 @@ window.addEventListener("DOMContentLoaded", function () {
 
 const colorChanging = document.getElementById("colorChanging");
 const seconds = document.getElementById("seconds");
-let counter = 61;
+let counter = 60;
 
 setInterval(() => {
   counter--;
-  colorChanging.setAttribute("style", `background: conic-gradient(#00ffff 0% ${100 - (counter / 60) * 100}%, white ${100 - (counter / 60) * 100}% 100%)`);
+  colorChanging.setAttribute("style", `background: conic-gradient(#9A6A9E 0% ${100 - (counter / 60) * 100}%, #00ffff  ${100 - (counter / 60) * 100}% 100%)`);
   //console.log(counter);
   seconds.innerText = counter;
-  if (counter === 1) {
+  if (counter === 0) {
     i++;
     if (i === 10) {
       window.location.href = "resultsPage.html";
     }
     testQuestionSkipper();
-    counter = 61;
+    counter = 60;
   }
 }, 1000);
