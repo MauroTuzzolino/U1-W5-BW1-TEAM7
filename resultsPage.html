@@ -29,9 +29,11 @@
         <div class="result-block">
           <div id="donut">
             <div class="donut-center">
-              <h3 id="donut-title">Congratulations!</h3>
-              <h3 id="donut-result">You passed the exam.</h3>
-              <p id="donut-para">We'll send you the certificate in few minutes. Check your email (including promotions / spam folder)</p>
+              <div id="donutTextContainer">
+                <h3 id="donut-title">Congratulations!</h3>
+                <h3 id="donut-result">You passed the exam.</h3>
+                <p id="donut-para">We'll send you the certificate in few minutes. Check your email (including promotions / spam folder)</p>
+              </div>
             </div>
           </div>
         </div>
@@ -50,6 +52,9 @@
     <script>
       let recivedData = localStorage.getItem("sharedData");
       //console.log(recivedData);
+      if (recivedData === null) {
+        recivedData = 0;
+      }
 
       const correctPercentage = document.getElementById("correct-percentage");
       correctPercentage.innerText = `${recivedData * 10}%`;

@@ -251,6 +251,7 @@ setInterval(() => {
 }, 1000);
 
 window.addEventListener("DOMContentLoaded", function () {
+  localStorage.clear();
   testQuestionSkipper();
 });
 
