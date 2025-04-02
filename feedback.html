@@ -74,7 +74,15 @@
       const starForm = document.getElementById("star-form");
       starForm.addEventListener("submit", function (e) {
         e.preventDefault();
-        alert("Grazie per aver partecipato al nostro test, speriamo ti sia piaciuto!");
+        if (currentRating < 7) {
+          alert("Dispiace");
+        } else if (currentRating < 9) {
+          alert("Grazie cerceremo di fare meglio");
+        } else {
+          alert("Grazie per aver partecipato al nostro test, speriamo ti sia piaciuto!");
+        }
+        console.log(document.getElementById("comment").value);
+        document.getElementById("comment").value = "";
       });
     </script>
     <!--<script type="module" src="./assets/JavaScript/script.js"></script>-->

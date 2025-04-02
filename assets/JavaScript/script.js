@@ -237,7 +237,7 @@ let counter = 60;
 
 setInterval(() => {
   counter--;
-  colorChanging.setAttribute("style", `background: conic-gradient(#9A6A9E 0% ${100 - (counter / 60) * 100}%, #00ffff  ${100 - (counter / 60) * 100}% 100%)`);
+  colorChanging.style.background = `conic-gradient(#9A6A9E 0% ${100 - (counter / 60) * 100}%, #00ffff  ${100 - (counter / 60) * 100}% 100%)`;
   //console.log(counter);
   seconds.innerText = counter;
   if (counter === 0) {

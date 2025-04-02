@@ -52,7 +52,7 @@
     <script>
       let recivedData = localStorage.getItem("sharedData");
       //console.log(recivedData);
-      if (recivedData === null) {
+      if (!recivedData) {
         recivedData = 0;
       }
 
