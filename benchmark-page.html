@@ -12,27 +12,23 @@
       <div id="logoContainer">
         <img src="./assets/img/epicode_logo.png" alt="epicode-logo" />
       </div>
-
+      <div id="colorChanging"></div>
       <div id="benchmarkTimerContainer">
         <div id="benchmarkTimer" class="benchmarkTimer">
           <span>SECONDS</span>
-          <span id="seconds">00</span>
+          <span id="seconds"></span>
           <span>REMAINING</span>
         </div>
       </div>
     </header>
     <main>
-      <h1>QUI ANDRà LA DOMANDA</h1>
-      <section id="benchmarkButtonsContainer">
-        <button class="benchamarkAnswerButton" id="benchamarkAnswerButton1">risposta 1</button>
-        <button class="benchamarkAnswerButton" id="benchamarkAnswerButton2">risposta 2</button>
-        <button class="benchamarkAnswerButton" id="benchamarkAnswerButton3">risposta 3</button>
-        <button class="benchamarkAnswerButton" id="benchamarkAnswerButton4">risposta 4</button>
-      </section>
+      <h1 id="questionH1">QUI ANDRà LA DOMANDA</h1>
+      <div id="containerOfBenchmarkButtonsContainer"></div>
     </main>
     <footer>
-      <h5>QUESTION X <span>/ 10</span></h5>
+      <h5 id="questionCounter">QUESTION X <span>/ 10</span></h5>
+      <button class="benchmarkAnswerButton" id="nextQuestionButton">NEXT QUESTION</button>
     </footer>
-    <script src="./assets/JavaScript/script.js"></script>
+    <script type="module" src="./assets/JavaScript/script.js"></script>
   </body>
 </html>

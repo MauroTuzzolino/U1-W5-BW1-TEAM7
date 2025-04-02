@@ -1,11 +1,20 @@
 header {
   text-align: left;
   margin-left: 20%;
+  padding-top: 2rem;
 }
 
 body {
   text-align: center;
 }
+
+main {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 20%);
+}
+
 h1 {
   font-size: 3rem;
   margin-bottom: 0;
@@ -15,7 +24,7 @@ p {
   margin-top: 0;
 }
 form {
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 #comment {
   background: none;
@@ -26,16 +35,24 @@ form {
   overflow-x: auto;
   width: 600px;
   resize: none;
+  color: white;
+  font-size: 20px;
 }
-#star-rating {
-  font-size: 4rem;
-  margin-bottom: 4rem;
-  margin-top: -1rem;
-  color: #0f1755;
-}
+
 #star-rating span {
-  margin: -0.3rem;
+  font-size: 4rem;
+  color: gray;
+  cursor: pointer;
 }
+
+#star-rating span.selected {
+  color: #00ffff;
+}
+
+#star-rating span.hover {
+  color: #00ffff;
+}
+
 button {
   margin-top: 3.5rem;
   padding-right: 2rem;

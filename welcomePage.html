@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/welcomePage.css" />
     <title>Welcome Page</title>
   </head>
@@ -26,11 +27,28 @@
     </main>
     <footer>
       <form id="proceedForm">
-        <input type="checkbox" name="promiseCheck " id="promiseCheck" required />
-        <label for="promiseCheck"><span>I promise to answer myself without help from anyone</span></label>
-        <button id="proceedButton">PROCEED</button>
+        <input type="checkbox" name="promiseCheck" id="promiseCheck" required />
+        <label for="promiseCheck">
+          <span>I promise to answer myself without help from anyone</span>
+        </label>
+        <button id="proceedButton" onclick="window.location.href= 'benchmark-page.html'">PROCEED</button>
       </form>
     </footer>
-    <script src="./assets/JavaScript/script.js"></script>
+    <script>
+      const promiseCheck = document.getElementById("promiseCheck");
+      const proceedButton = document.getElementById("proceedButton");
+      const proceedForm = document.getElementById("proceedForm");
+
+      proceedForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        window.location.href = "benchmark-page.html";
+      });
+
+      proceedButton.disabled = true;
+      promiseCheck.addEventListener("change", () => {
+        proceedButton.disabled = !promiseCheck.checked;
+      });
+    </script>
+    <!--<script type="module" src="./assets/JavaScript/script.js"></script>-->
   </body>
 </html>

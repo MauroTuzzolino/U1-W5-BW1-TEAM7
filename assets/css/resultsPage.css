@@ -29,6 +29,10 @@
   aspect-ratio: 1/0.5;
 }
 
+.result-block h2 {
+  font-size: 2rem;
+}
+
 .result-block:nth-child(1) {
   text-align: left;
 }
@@ -39,10 +43,12 @@
 
 #correct-percentage {
   font-weight: 700;
+  font-size: 5rem;
+  margin-top: -15px;
 }
 
 #correct-questions {
-  font-size: 0.7rem;
+  font-size: 2rem;
   font-weight: 300;
 }
 
@@ -56,10 +62,12 @@
 
 #wrong-percentage {
   font-weight: 700;
+  font-size: 5rem;
+  margin-top: -15px;
 }
 
 #wrong-questions {
-  font-size: 0.7rem;
+  font-size: 2rem;
   font-weight: 300;
 }
 
@@ -69,10 +77,10 @@ p {
   margin: 0;
 }
 
-.donut {
+#donut {
   aspect-ratio: 1/1;
   /* diventera una variabile */
-  background: conic-gradient(#d20094 0% 33%, #00ffff 33% 100%);
+  /*background: conic-gradient(#d20094 0% 33%, #00ffff 33% 100%);*/
   border-radius: 50%;
 }
 
@@ -88,10 +96,18 @@ p {
   padding: 0.5rem;
 }
 
+#donutTextContainer {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 #donut-title {
-  margin-top: 1rem;
+  margin-top: 0px;
+  margin-bottom: 1.7rem;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 2rem;
 }
 
 #donut-result {

@@ -7,31 +7,84 @@
     <link rel="stylesheet" href="./assets/css/feedbackStyle.css" />
     <title>Feedback</title>
   </head>
-  <header><img src="./assets/img/epicode_logo.png" width="200px" alt="logo Epicode" /></header>
   <body>
-    <h1>Tell us how it's going</h1>
-    <p>from 0 to 10, how likely are you to recommend EPICODE <br />to a friend or a colleague?</p>
-    <form id="star-form" action="/submit-vote">
-      <div id="star-rating">
-        <span data-value="1">★</span>
-        <span data-value="2">★</span>
-        <span data-value="3">★</span>
-        <span data-value="4">★</span>
-        <span data-value="5">★</span>
-        <span data-value="6">★</span>
-        <span data-value="7">★</span>
-        <span data-value="8">★</span>
-        <span data-value="9">★</span>
-        <span data-value="10">★</span>
-      </div>
-      <p>Leave us open feedback about your experience so far</p>
-      <form action="/submit-comment">
-        <textarea id="comment" cols="100" placeholder="write your comment here"></textarea>
-        <div>
-          <button>SEND COMMENT</button>
+    <header><img src="./assets/img/epicode_logo.png" width="200px" alt="logo Epicode" /></header>
+    <main>
+      <h1>Tell us how it's going</h1>
+      <p>from 0 to 10, how likely are you to recommend EPICODE <br />to a friend or a colleague?</p>
+      <form id="star-form" action="/submit-vote">
+        <div id="star-rating">
+          <span data-value="1">★</span>
+          <span data-value="2">★</span>
+          <span data-value="3">★</span>
+          <span data-value="4">★</span>
+          <span data-value="5">★</span>
+          <span data-value="6">★</span>
+          <span data-value="7">★</span>
+          <span data-value="8">★</span>
+          <span data-value="9">★</span>
+          <span data-value="10">★</span>
         </div>
+        <p>Leave us open feedback about your experience so far</p>
+        <form id="submitButtonForm" action="/submit-comment">
+          <textarea id="comment" cols="100" placeholder="write your comment here"></textarea>
+          <div>
+            <button>SEND COMMENT</button>
+          </div>
+        </form>
       </form>
-    </form>
-    <script src="./assets/JavaScript/script.js"></script>
+    </main>
+    <script>
+      const stars = document.querySelectorAll("#star-rating span");
+      let currentRating = 0;
+
+      function updateRating(rating) {
+        for (let i = 0; i < stars.length; i++) {
+          const star = stars[i];
+          if (parseInt(star.getAttribute("data-value")) <= rating) {
+            star.classList.add("selected");
+          } else {
+            star.classList.remove("selected");
+          }
+        }
+      }
+
+      for (let i = 0; i < stars.length; i++) {
+        const star = stars[i];
+
+        star.addEventListener("mouseover", function () {
+          const rating = parseInt(star.getAttribute("data-value"));
+          updateRating(rating);
+          star.classList.add("hover");
+        });
+
+        star.addEventListener("mouseout", function () {
+          updateRating(currentRating);
+          for (let j = 0; j < stars.length; j++) {
+            stars[j].classList.remove("hover");
+          }
+        });
+
+        star.addEventListener("click", function () {
+          currentRating = parseInt(star.getAttribute("data-value"));
+          updateRating(currentRating);
+        });
+      }
+
+      const starForm = document.getElementById("star-form");
+      starForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (currentRating < 7) {
+          alert("Dispiace");
+        } else if (currentRating < 9) {
+          alert("Grazie cerceremo di fare meglio");
+        } else {
+          alert("Grazie per aver partecipato al nostro test, speriamo ti sia piaciuto!");
+        }
+        console.log(document.getElementById("comment").value);
+        document.getElementById("comment").value = "";
+      });
+    </script>
+    <!--<script type="module" src="./assets/JavaScript/script.js"></script>-->
   </body>
 </html>
