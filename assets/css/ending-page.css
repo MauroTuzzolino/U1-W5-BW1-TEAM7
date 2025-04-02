@@ -38,3 +38,8 @@ footer {
 span {
   color: #e58514;
 }
+
+main span {
+  font-weight: bold;
+  color: azure;
+}
