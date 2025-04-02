@@ -1,4 +1,4 @@
-const questions = [
+/*
   {
     category: "Science: Computers",
     type: "multiple",
@@ -78,29 +78,52 @@ const questions = [
     question: "Which programming language shares its name with an island in Indonesia?",
     correct_answer: "Java",
     incorrect_answers: ["Python", "C", "Jakarta"],
-  },
-];
+  },*/
+let questions = [];
+const fetchQ = async () => {
+  try {
+    const response = await fetch(`https://opentdb.com/api.php?amount=${takeOut}&category=18&difficulty=${takeOut2}`);
+    //console.log(response);
+    const data = await response.json();
+    questions = await data.results;
+    console.log(data.results);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-let takeOut;
-let takeOut2;
+let takeOut; //numero domande
+let takeOut2; //difficoltà
 const section = document.getElementById("formContainer");
 const form = document.getElementById("formid");
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   let numbOfQuestions = document.getElementById("numbOfQuestions");
   takeOut = numbOfQuestions.value;
-  let radioChoice = document.getElementsByName("difficulty");
-  takeOut2 = radioChoice.value;
+  let radioChoice = document.querySelector('input[name="difficulty"]:checked')?.value;
+  takeOut2 = radioChoice;
+  console.log(takeOut2);
   //cambia con la nostra
-  testQuestionSkipper();
-  timerFunction();
+  fetchQ();
+  if (questions.length !== 0) {
+    console.log(questions);
+    cycleFunction();
+    testQuestionSkipper();
+    timerFunction();
+  }
 });
 
+console.log(questions);
 const allAnswer = [];
-for (let i = 0; i < questions.length; i++) {
-  questions[i].incorrect_answers.push(questions[i].correct_answer);
-  allAnswer.push(questions[i].incorrect_answers);
-}
+
+const cycleFunction = function () {
+  console.log(questions);
+  for (let i = 0; i < questions.length; i++) {
+    questions[i].incorrect_answers.push(questions[i].correct_answer);
+    allAnswer.push(questions[i].incorrect_answers);
+  }
+};
+
 //console.log(allAnswer);
 
 const randomArrayPosition = function (arry) {

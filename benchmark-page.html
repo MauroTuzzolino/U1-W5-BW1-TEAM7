@@ -28,13 +28,13 @@
         <section id="formContainer">
           <form id="formid">
             <p>Please select the difficulty you want to try:</p>
-              <input type="radio" id="easyDiff" name="difficulty" value="easy" />   <label for="easyDiff">EASY</label><br />
-              <input type="radio" id="mediumDiff" name="difficulty" value="medium" />   <label for="mediumDiff">MEDIUM</label><br />
-              <input type="radio" id="hardDiff" name="difficulty" value="hard" />   <label for="hardDiff">HARD</label>
+              <input type="radio" id="easyDiff" name="difficulty" value="easy" required />   <label for="easyDiff">EASY</label><br />
+              <input type="radio" id="mediumDiff" name="difficulty" value="medium" required />   <label for="mediumDiff">MEDIUM</label><br />
+              <input type="radio" id="hardDiff" name="difficulty" value="hard" required />   <label for="hardDiff">HARD</label>
 
             <p>Please choose how many questions you want to answer:</p>
             <label for="numbOfQuestions"> Da 1 a 30</label>
-            <input id="numbOfQuestions" type="number" min="1" max="30" />
+            <input id="numbOfQuestions" type="number" min="1" max="30" required />
 
             <button type="submit" id="startGameButton">START THE TEST</button>
           </form>
