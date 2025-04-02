@@ -81,6 +81,21 @@ const questions = [
   },
 ];
 
+let takeOut;
+let takeOut2;
+const section = document.getElementById("formContainer");
+const form = document.getElementById("formid");
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  let numbOfQuestions = document.getElementById("numbOfQuestions");
+  takeOut = numbOfQuestions.value;
+  let radioChoice = document.getElementsByName("difficulty");
+  takeOut2 = radioChoice.value;
+  //cambia con la nostra
+  testQuestionSkipper();
+  timerFunction();
+});
+
 const allAnswer = [];
 for (let i = 0; i < questions.length; i++) {
   questions[i].incorrect_answers.push(questions[i].correct_answer);
@@ -220,14 +235,22 @@ const verifyAnswer = function () {
   }
 };
 
-nextQuestionButton.addEventListener("click", function () {
-  verifyAnswer();
+const redOrGreen = function () {
   let choosenAnswer = document.querySelector(".clickedButton");
+  if (!choosenAnswer) {
+    return;
+  }
   if (choosenAnswer.innerText === questions[i].correct_answer) {
     choosenAnswer.classList.add("correctAnswer");
   } else {
     choosenAnswer.classList.add("wrongAnswer");
   }
+};
+
+nextQuestionButton.addEventListener("click", function () {
+  //console.log("ciaooooo");
+  verifyAnswer();
+  redOrGreen();
   counter = 60;
   //console.log(correctAnswerCounter);
   i++;
@@ -243,24 +266,27 @@ const colorChanging = document.getElementById("colorChanging");
 const seconds = document.getElementById("seconds");
 let counter = 60;
 
-setInterval(() => {
-  counter--;
-  colorChanging.style.background = `conic-gradient(#9A6A9E 0% ${100 - (counter / 60) * 100}%, #00ffff  ${100 - (counter / 60) * 100}% 100%)`;
-  //console.log(counter);
-  seconds.innerText = counter;
-  if (counter === 0) {
-    i++;
-    if (i === 10) {
-      window.location.href = "resultsPage.html";
+const timerFunction = function () {
+  setInterval(() => {
+    counter--;
+    colorChanging.style.background = `conic-gradient(#9A6A9E 0% ${100 - (counter / 60) * 100}%, #00ffff  ${100 - (counter / 60) * 100}% 100%)`;
+    //console.log(counter);
+    seconds.innerText = counter;
+    if (counter === 0) {
+      i++;
+      if (i === 10) {
+        window.location.href = "resultsPage.html";
+      }
+      testQuestionSkipper();
+      counter = 60;
     }
-    testQuestionSkipper();
-    counter = 60;
-  }
-}, 1000);
+  }, 1000);
+};
 
 window.addEventListener("DOMContentLoaded", function () {
   localStorage.clear();
-  testQuestionSkipper();
+  //timerFunction();
+  //testQuestionSkipper();
 });
 
 //let gennaro = 3;
