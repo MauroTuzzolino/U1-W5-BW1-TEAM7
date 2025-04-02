@@ -151,98 +151,37 @@ const question = document.getElementById("questionH1");
 const nextQuestionButton = document.getElementById("nextQuestionButton");
 let i = 0;
 
+const clicked = function () {
+  const selected = document.querySelector(".clickedButton");
+  if (selected) {
+    selected.classList.remove("clickedButton");
+  }
+};
+
 const testQuestionSkipper = function () {
   question.innerText = questions[i].question;
   questionCounter.innerText = `QUESTION ${i + 1} / 10`;
   containerOfQuestionAnswerContainer.innerHTML = "";
   const rAP = randomArrayPosition(allAnswer[i]);
+  const questionAnswerContainer = document.createElement("div");
+  questionAnswerContainer.id = "benchmarkButtonsContainer";
+  containerOfQuestionAnswerContainer.appendChild(questionAnswerContainer);
+  if (rAP.length == 2) {
+    rAP.pop();
+    rAP.pop();
+    rAP.push("True");
+    rAP.push("False");
+  }
+  for (let j = 0; j < rAP.length; j++) {
+    const answerButton = document.createElement("button");
+    answerButton.classList.add("benchmarkAnswerButton");
+    questionAnswerContainer.appendChild(answerButton);
 
-  if (questions[i].type === "multiple") {
-    let answerButton1 = document.createElement("button");
-    let answerButton2 = document.createElement("button");
-    let answerButton3 = document.createElement("button");
-    let answerButton4 = document.createElement("button");
-    let questionAnswerContainer = document.createElement("div");
-
-    answerButton1.classList.add("benchmarkAnswerButton");
-    answerButton2.classList.add("benchmarkAnswerButton");
-    answerButton3.classList.add("benchmarkAnswerButton");
-    answerButton4.classList.add("benchmarkAnswerButton");
-    answerButton1.id = "benchmarkAnswerButton1";
-    answerButton2.id = "benchmarkAnswerButton2";
-    answerButton3.id = "benchmarkAnswerButton3";
-    answerButton4.id = "benchmarkAnswerButton4";
-    questionAnswerContainer.id = "benchmarkButtonsContainer";
-
-    answerButton1.addEventListener("click", function () {
-      answerButton1.classList.remove("clickedButton");
-      answerButton2.classList.remove("clickedButton");
-      answerButton3.classList.remove("clickedButton");
-      answerButton4.classList.remove("clickedButton");
-      answerButton1.classList.add("clickedButton");
+    answerButton.addEventListener("click", function () {
+      clicked();
+      answerButton.classList.add("clickedButton");
     });
-    answerButton2.addEventListener("click", function () {
-      answerButton1.classList.remove("clickedButton");
-      answerButton2.classList.remove("clickedButton");
-      answerButton3.classList.remove("clickedButton");
-      answerButton4.classList.remove("clickedButton");
-      answerButton2.classList.add("clickedButton");
-    });
-    answerButton3.addEventListener("click", function () {
-      answerButton1.classList.remove("clickedButton");
-      answerButton2.classList.remove("clickedButton");
-      answerButton3.classList.remove("clickedButton");
-      answerButton4.classList.remove("clickedButton");
-      answerButton3.classList.add("clickedButton");
-    });
-    answerButton4.addEventListener("click", function () {
-      answerButton1.classList.remove("clickedButton");
-      answerButton2.classList.remove("clickedButton");
-      answerButton3.classList.remove("clickedButton");
-      answerButton4.classList.remove("clickedButton");
-      answerButton4.classList.add("clickedButton");
-    });
-
-    answerButton1.innerText = rAP[0];
-    answerButton2.innerText = rAP[1];
-    answerButton3.innerText = rAP[2];
-    answerButton4.innerText = rAP[3];
-
-    containerOfQuestionAnswerContainer.appendChild(questionAnswerContainer);
-    questionAnswerContainer.appendChild(answerButton1);
-    questionAnswerContainer.appendChild(answerButton2);
-    questionAnswerContainer.appendChild(answerButton3);
-    questionAnswerContainer.appendChild(answerButton4);
-  } else {
-    let answerButtonBoolean1 = document.createElement("button");
-    let answerButtonBoolean2 = document.createElement("button");
-    let questionAnswerContainer = document.createElement("div");
-
-    answerButtonBoolean1.classList.add("benchmarkAnswerButton");
-    answerButtonBoolean2.classList.add("benchmarkAnswerButton");
-    answerButtonBoolean1.id = "benchmarkAnswerButton1";
-    answerButtonBoolean2.id = "benchmarkAnswerButton2";
-    questionAnswerContainer.id = "benchmarkButtonsContainer";
-
-    answerButtonBoolean1.addEventListener("click", function () {
-      answerButtonBoolean1.classList.remove("clickedButton");
-      answerButtonBoolean2.classList.remove("clickedButton");
-      answerButtonBoolean1.classList.add("clickedButton");
-    });
-    answerButtonBoolean2.addEventListener("click", function () {
-      answerButtonBoolean1.classList.remove("clickedButton");
-      answerButtonBoolean2.classList.remove("clickedButton");
-      answerButtonBoolean2.classList.add("clickedButton");
-    });
-
-    answerButtonBoolean1.innerText = "True";
-    answerButtonBoolean2.innerText = "False";
-    //console.log(answerButtonBoolean1);
-    //console.log(questionAnswerContainer);
-    containerOfQuestionAnswerContainer.appendChild(questionAnswerContainer);
-    questionAnswerContainer.appendChild(answerButtonBoolean1);
-    //console.log(questionAnswerContainer);
-    questionAnswerContainer.appendChild(answerButtonBoolean2);
+    answerButton.innerText = rAP[j];
   }
 };
 
