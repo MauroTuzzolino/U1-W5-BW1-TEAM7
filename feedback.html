@@ -28,7 +28,7 @@
       <form action="/submit-comment">
         <textarea id="comment" cols="100" placeholder="write your comment here"></textarea>
         <div>
-          <button>SEND COMMENT</button>
+          <button id="sendCommentButton">SEND COMMENT</button>
         </div>
       </form>
     </form>
@@ -68,6 +68,12 @@
           updateRating(currentRating);
         });
       }
+      const sendCommentButton = document.getElementById("sendCommentButton");
+
+      sendCommentButton.addEventListener("click", function (e) {
+        e.preventDefault(); // Previene il comportamento predefinito del pulsante
+        window.location.href = "ending-page.html"; // Reindirizza alla pagina finale
+      });
     </script>
     <!--<script type="module" src="./assets/JavaScript/script.js"></script>-->
   </body>

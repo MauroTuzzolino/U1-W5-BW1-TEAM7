@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Italianno&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(../img/ChatGPT\ Image\ 2\ apr\ 2025\,\ 13_50_50.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: white;
+}
+main {
+  margin-left: 5rem;
+  font-size: 2rem;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+h1 {
+  color: rgb(219, 27, 219);
+}
+p {
+  padding-top: 3rem;
+  color: #e58514;
+}
+aside {
+  font-size: 4rem;
+  font-family: "Italianno", cursive;
+  color: rgb(219, 27, 219);
+  transform: translate(40%, 200%);
+}
+footer {
+  margin-left: 3rem;
+  margin-top: 8rem;
+}
+span {
+  color: #e58514;
+}
