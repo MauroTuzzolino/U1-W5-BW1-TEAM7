@@ -11,8 +11,7 @@ const questions = [
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question:
-      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
+    question: "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
     correct_answer: "Final",
     incorrect_answers: ["Static", "Private", "Public"],
   },
@@ -28,8 +27,7 @@ const questions = [
     category: "Science: Computers",
     type: "boolean",
     difficulty: "easy",
-    question:
-      "Pointers were not used in the original C programming language; they were added later on in C++.",
+    question: "Pointers were not used in the original C programming language; they were added later on in C++.",
     correct_answer: "False",
     incorrect_answers: ["True"],
   },
@@ -106,9 +104,7 @@ const randomArrayPosition = function (arry) {
 };
 
 const questionCounter = document.getElementById("questionCounter");
-const containerOfQuestionAnswerContainer = document.getElementById(
-  "containerOfBenchmarkButtonsContainer"
-);
+const containerOfQuestionAnswerContainer = document.getElementById("containerOfBenchmarkButtonsContainer");
 const question = document.getElementById("questionH1");
 const nextQuestionButton = document.getElementById("nextQuestionButton");
 let i = 0;
@@ -214,8 +210,13 @@ const verifyAnswer = function () {
   let choosenAnswer = document.querySelector(".clickedButton");
   //console.log(questions[i].correct_answer);
   //console.log(choosenAnswer);
-  if (choosenAnswer.innerText === questions[i].correct_answer) {
-    correctAnswerCounter++;
+  if (!choosenAnswer) {
+    return;
+  } else {
+    if (choosenAnswer.innerText === questions[i].correct_answer) {
+      correctAnswerCounter++;
+      localStorage.setItem("sharedData", correctAnswerCounter);
+    }
   }
 };
 
@@ -230,27 +231,14 @@ nextQuestionButton.addEventListener("click", function () {
   testQuestionSkipper();
 });
 
-window.addEventListener("DOMContentLoaded", function () {
-  testQuestionSkipper();
-});
-
-const colorChanging = document.getElementById("benchmarkTimerContainer");
+const colorChanging = document.getElementById("colorChanging");
 const seconds = document.getElementById("seconds");
 let counter = 60;
 
 setInterval(() => {
   counter--;
-  const stefano = (counter / 60) * 180;
-  const dynamicColor = `hsl(${stefano}, 100%, 50%)`;
-
-  colorChanging.style.background = `conic-gradient(${dynamicColor} 0% ${
-    (counter / 60) * 100
-  }%, white ${(counter / 60) * 100}% 100%)`;
-
-  colorChanging.style.borderRadius = "50%";
-  colorChanging.style.padding = "10px";
-  colorChanging.style.boxSizing = "border-box";
-
+  colorChanging.setAttribute("style", `background: conic-gradient(#9A6A9E 0% ${100 - (counter / 60) * 100}%, #00ffff  ${100 - (counter / 60) * 100}% 100%)`);
+  //console.log(counter);
   seconds.innerText = counter;
   if (counter === 0) {
     i++;
@@ -261,3 +249,9 @@ setInterval(() => {
     counter = 60;
   }
 }, 1000);
+
+window.addEventListener("DOMContentLoaded", function () {
+  testQuestionSkipper();
+});
+
+//let gennaro = 3;

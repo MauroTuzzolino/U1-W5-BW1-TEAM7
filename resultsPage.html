@@ -23,11 +23,11 @@
         <div class="result-block">
           <h2>Correct</h2>
           <h2 id="correct-percentage">66.7%</h2>
-          <p id="correct-questions"><span>4/6</span> questions</p>
+          <p id="correct-questions"></p>
         </div>
 
         <div class="result-block">
-          <div class="donut">
+          <div id="donut">
             <div class="donut-center">
               <h3 id="donut-title">Congratulations!</h3>
               <h3 id="donut-result">You passed the exam.</h3>
@@ -46,6 +46,48 @@
         <button id="send-button">RATE US</button>
       </div>
     </div>
-    <script src="./assets/JavaScript/script.js"></script>
+    <!--<script type="module" src="./assets/JavaScript/script.js"></script>-->
+    <script>
+      let recivedData = localStorage.getItem("sharedData");
+      //console.log(recivedData);
+
+      const correctPercentage = document.getElementById("correct-percentage");
+      correctPercentage.innerText = `${recivedData * 10}%`;
+
+      const correctQuestions = document.getElementById("correct-questions");
+      correctQuestions.innerText = `${recivedData}/10 questions`;
+
+      const wrongPercentage = document.getElementById("wrong-percentage");
+      wrongPercentage.innerText = `${(10 - recivedData) * 10}%`;
+
+      const wrongQuestions = document.getElementById("wrong-questions");
+      wrongQuestions.innerText = `${10 - recivedData}/10 questions`;
+
+      const donutResults = function () {
+        const donut = document.getElementById("donut");
+        donut.style.background = `conic-gradient(#d20094 0% ${(10 - recivedData) * 10}%, #00ffff ${(10 - recivedData) * 10}% 100%)`;
+
+        if (10 - recivedData > recivedData) {
+          const donutTitle = document.getElementById("donut-title");
+          donutTitle.innerText = "You failed!";
+
+          const donutResult = document.getElementById("donut-result");
+          donutResult.innerText = "You haven't passed the exam.";
+
+          const donutPara = document.getElementById("donut-para");
+          donutPara.innerText = "You failed so you won't receive our certificate. Check your e-mail for promotions and spams.";
+        }
+      };
+
+      const sendButton = document.getElementById("send-button");
+      sendButton.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.location.href = "./feedback.html";
+      });
+
+      window.addEventListener("DOMContentLoaded", function () {
+        donutResults();
+      });
+    </script>
   </body>
 </html>

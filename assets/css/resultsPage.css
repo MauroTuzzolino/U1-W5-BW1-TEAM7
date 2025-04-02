@@ -69,10 +69,10 @@ p {
   margin: 0;
 }
 
-.donut {
+#donut {
   aspect-ratio: 1/1;
   /* diventera una variabile */
-  background: conic-gradient(#d20094 0% 33%, #00ffff 33% 100%);
+  /*background: conic-gradient(#d20094 0% 33%, #00ffff 33% 100%);*/
   border-radius: 50%;
 }
 
