@@ -235,3 +235,8 @@ input {
   font-weight: bold;
   padding: 0.5rem;
 }
+
+#startGameButton:hover {
+  color: #00ffff;
+  border-color: #00ffff;
+}

@@ -180,9 +180,7 @@ nextQuestionButton.addEventListener("click", function () {
   counter = 60;
   //console.log(correctAnswerCounter);
   i++;
-  if (i === questions.length) {
-    window.location.href = "resultsPage.html";
-  }
+  skipPage();
   setTimeout(() => {
     testQuestionSkipper();
   }, 500);
@@ -200,13 +198,20 @@ const timerFunction = function () {
     seconds.innerText = counter;
     if (counter === 0) {
       i++;
-      if (i === questions.length) {
-        window.location.href = "resultsPage.html";
-      }
+      skipPage();
       testQuestionSkipper();
       counter = 60;
     }
   }, 1000);
+};
+
+const skipPage = function () {
+  if (i === questions.length) {
+    const userQToString = JSON.stringify(userQ);
+    localStorage.setItem("userAnswer", userQToString);
+    console.log(userQToString);
+    window.location.href = "resultsPage.html";
+  }
 };
 
 window.addEventListener("DOMContentLoaded", function () {

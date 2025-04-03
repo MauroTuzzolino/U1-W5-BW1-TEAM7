@@ -134,3 +134,40 @@ p {
   padding: 1rem 3rem;
   font-weight: bold;
 }
+
+#send-button:hover {
+  color: #00ffff;
+  border-color: #00ffff;
+}
+
+#containerOfTable {
+  max-width: 70rem;
+  margin: auto;
+}
+
+table {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  border-collapse: collapse;
+}
+
+th,
+tr,
+td {
+  border: 3px solid white;
+  padding: 0.5rem;
+}
+
+th {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+tr,
+td {
+  font-size: 1.5rem;
+}
+
+td:not(:first-child) {
+  text-align: center;
+}
