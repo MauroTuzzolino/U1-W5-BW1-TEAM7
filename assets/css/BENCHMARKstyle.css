@@ -145,8 +145,7 @@ form label {
   margin-top: 2rem;
   margin-left: 1rem;
   background: transparent;
-  border: 2px solid #fff;
-  color: #fff;
+  border: 2px solid;
   font-size: 1.5rem;
   font-weight: 400;
   padding: 0.5rem;
@@ -157,13 +156,17 @@ form label {
   border-color: green;
 }
 
+.labelEasy {
+  color: green;
+  border-color: green;
+}
+
 #labelMedium {
   width: 5rem;
   margin-top: 2rem;
   margin-left: 1rem;
   background: transparent;
-  border: 2px solid #fff;
-  color: #fff;
+  border: 2px solid;
   font-size: 1.5rem;
   font-weight: 400;
   padding: 0.5rem;
@@ -174,19 +177,28 @@ form label {
   border-color: yellow;
 }
 
+.labelMedium {
+  color: yellow;
+  border-color: yellow;
+}
+
 #labelHard {
   width: 5rem;
   margin-top: 2rem;
   margin-left: 1rem;
   background: transparent;
-  border: 2px solid #fff;
-  color: #fff;
+  border: 2px solid;
   font-size: 1.5rem;
   font-weight: 400;
   padding: 0.5rem;
 }
 
 #labelHard:hover {
+  color: red;
+  border-color: red;
+}
+
+.labelHard {
   color: red;
   border-color: red;
 }

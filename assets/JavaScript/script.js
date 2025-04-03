@@ -1,3 +1,29 @@
+const easyInput = document.getElementById("easyDiff");
+const mediumInput = document.getElementById("mediumDiff");
+const hardInput = document.getElementById("hardDiff");
+
+const easyLabel = document.getElementById("labelEasy");
+const mediumLabel = document.getElementById("labelMedium");
+const hardLabel = document.getElementById("labelHard");
+
+easyInput.addEventListener("click", function () {
+  mediumLabel.classList.remove("labelMedium");
+  hardLabel.classList.remove("labelHard");
+  easyLabel.classList.add("labelEasy");
+});
+
+mediumInput.addEventListener("click", function () {
+  easyLabel.classList.remove("labelEasy");
+  hardLabel.classList.remove("labelHard");
+  mediumLabel.classList.add("labelMedium");
+});
+
+hardInput.addEventListener("click", function () {
+  mediumLabel.classList.remove("labelMedium");
+  easyLabel.classList.remove("labelEasy");
+  hardLabel.classList.add("labelHard");
+});
+
 let questions;
 const fetchQ = async () => {
   try {
