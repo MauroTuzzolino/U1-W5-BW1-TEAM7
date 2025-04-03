@@ -66,3 +66,9 @@ button {
   box-shadow: #00ffff;
   box-shadow: 0 0 20px rgba(7, 240, 248, 0.8);
 }
+
+#result-message {
+  display: none;
+  text-align: center;
+  margin-top: 50px;
+}
