@@ -34,6 +34,9 @@
         </form>
       </form>
     </main>
+    <div id="result-message">
+      <h1 id="result-text"></h1>
+    </div>
     <script>
       const stars = document.querySelectorAll("#star-rating span");
       let currentRating = 0;
@@ -72,17 +75,33 @@
       }
 
       const starForm = document.getElementById("star-form");
+      const feedbackContainer = document.querySelector("main");
+      const resultMessage = document.getElementById("result-message");
+      const resultText = document.getElementById("result-text");
+      const mageImg = document.createElement("img");
+
       starForm.addEventListener("submit", function (e) {
         e.preventDefault();
-        if (currentRating < 7) {
-          alert("Dispiace");
-        } else if (currentRating < 9) {
-          alert("Grazie cerceremo di fare meglio");
+
+        feedbackContainer.style.display = "none";
+
+        if (currentRating <= 3) {
+          resultText.innerText =
+            "Thank you for participating.\nSorry you didn't like it.\nWe will do our best to improve the test, following your suggestions.";
+          mageImg.src = "./assets/img/coldFace.png";
+          resultMessage.append(mageImg);
+        } else if (currentRating <= 7) {
+          resultText.innerText = "Thank you for participating.\nWe will do our best to improve the test, following your suggestions.";
+          mageImg.src = "./assets/img/o7Img.png";
+          resultMessage.append(mageImg);
         } else {
-          alert("Grazie per aver partecipato al nostro test, speriamo ti sia piaciuto!");
+          resultText.innerText =
+            "Thank you for participating.\nWe are happy that you enjoyed our test.\nWe will continue to improve it to make it even better!";
+          mageImg.src = "./assets/img/magePng.png";
+          resultMessage.append(mageImg);
         }
-        console.log(document.getElementById("comment").value);
-        document.getElementById("comment").value = "";
+
+        resultMessage.style.display = "block";
       });
     </script>
     <!--<script type="module" src="./assets/JavaScript/script.js"></script>-->

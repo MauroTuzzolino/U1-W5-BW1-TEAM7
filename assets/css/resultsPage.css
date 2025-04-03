@@ -133,4 +133,54 @@ p {
   font-size: large;
   padding: 1rem 3rem;
   font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#send-button:hover {
+  color: #00ffff;
+  border-color: #00ffff;
+}
+
+#containerOfTable {
+  max-width: 70rem;
+  margin: auto;
+}
+
+table {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  border-collapse: collapse;
+}
+
+th,
+tr,
+td {
+  border: 3px solid white;
+  padding: 0.5rem;
+}
+
+th {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+tr,
+td {
+  font-size: 1.5rem;
+}
+
+td:not(:first-child) {
+  text-align: center;
+}
+
+.itsCorrect {
+  background-color: rgb(8, 82, 8);
+}
+
+.itsIncorrect {
+  background-color: rgb(167, 13, 44);
+}
+#star-span {
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
 }

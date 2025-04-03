@@ -21,9 +21,33 @@
         </div>
       </div>
     </header>
+
     <main>
-      <h1 id="questionH1">QUI ANDRà LA DOMANDA</h1>
-      <div id="containerOfBenchmarkButtonsContainer"></div>
+      <h1 id="questionH1"></h1>
+      <div id="containerOfBenchmarkButtonsContainer">
+        <section id="formContainer">
+          <form id="formid">
+            <h2>Before you start the test...</h2>
+            <p>Please select the difficulty you want to try:</p>
+              <input type="radio" id="easyDiff" name="difficulty" value="easy" required />   <label for="easyDiff" id="labelEasy">EASY</label>  
+            <input type="radio" id="mediumDiff" name="difficulty" value="medium" required />   <label for="mediumDiff" id="labelMedium">MEDIUM</label>  
+            <input type="radio" id="hardDiff" name="difficulty" value="hard" required />   <label for="hardDiff" id="labelHard">HARD</label>
+
+            <p>Please choose how many questions you want to answer:</p>
+            <label for="numbOfQuestions">How many questions do you want to answer?</label>
+            <select id="numbOfQuestions">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="25">25</option>
+              <option value="30">30</option>
+            </select>
+
+            <button type="submit" id="startGameButton">START THE TEST</button>
+          </form>
+        </section>
+      </div>
     </main>
     <footer>
       <h5 id="questionCounter">QUESTION X <span>/ 10</span></h5>

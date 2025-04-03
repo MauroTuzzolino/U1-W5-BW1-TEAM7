@@ -1,3 +1,10 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 header {
   text-align: left;
   margin-left: 20%;
@@ -12,7 +19,7 @@ main {
   position: relative;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 20%);
+  transform: translate(-50%, -50%);
 }
 
 h1 {
@@ -65,4 +72,19 @@ button {
   font-size: 1.2rem;
   box-shadow: #00ffff;
   box-shadow: 0 0 20px rgba(7, 240, 248, 0.8);
+}
+
+#result-message {
+  display: none;
+  text-align: center;
+  margin-top: 50px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#result-message img {
+  margin-top: 3.9rem;
+  height: 25rem;
 }

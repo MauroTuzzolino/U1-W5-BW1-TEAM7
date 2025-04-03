@@ -1,91 +1,89 @@
-const questions = [
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "What does CPU stand for?",
-    correct_answer: "Central Processing Unit",
-    incorrect_answers: ["Central Process Unit", "Computer Personal Unit", "Central Processor Unit"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
-    correct_answer: "Final",
-    incorrect_answers: ["Static", "Private", "Public"],
-  },
-  {
-    category: "Science: Computers",
-    type: "boolean",
-    difficulty: "easy",
-    question: "The logo for Snapchat is a Bell.",
-    correct_answer: "False",
-    incorrect_answers: ["True"],
-  },
-  {
-    category: "Science: Computers",
-    type: "boolean",
-    difficulty: "easy",
-    question: "Pointers were not used in the original C programming language; they were added later on in C++.",
-    correct_answer: "False",
-    incorrect_answers: ["True"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "What is the most preferred image format used for logos in the Wikimedia database?",
-    correct_answer: ".svg",
-    incorrect_answers: [".png", ".jpeg", ".gif"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "In web design, what does CSS stand for?",
-    correct_answer: "Cascading Style Sheet",
-    incorrect_answers: ["Counter Strike: Source", "Corrective Style Sheet", "Computer Style Sheet"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "What is the code name for the mobile operating system Android 7.0?",
-    correct_answer: "Nougat",
-    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "On Twitter, what is the character limit for a Tweet?",
-    correct_answer: "140",
-    incorrect_answers: ["120", "160", "100"],
-  },
-  {
-    category: "Science: Computers",
-    type: "boolean",
-    difficulty: "easy",
-    question: "Linux was first created as an alternative to Windows XP.",
-    correct_answer: "False",
-    incorrect_answers: ["True"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "Which programming language shares its name with an island in Indonesia?",
-    correct_answer: "Java",
-    incorrect_answers: ["Python", "C", "Jakarta"],
-  },
-];
+const easyInput = document.getElementById("easyDiff");
+const mediumInput = document.getElementById("mediumDiff");
+const hardInput = document.getElementById("hardDiff");
 
+const easyLabel = document.getElementById("labelEasy");
+const mediumLabel = document.getElementById("labelMedium");
+const hardLabel = document.getElementById("labelHard");
+
+easyInput.addEventListener("click", function () {
+  mediumLabel.classList.remove("labelMedium");
+  hardLabel.classList.remove("labelHard");
+  easyLabel.classList.add("labelEasy");
+});
+
+mediumInput.addEventListener("click", function () {
+  easyLabel.classList.remove("labelEasy");
+  hardLabel.classList.remove("labelHard");
+  mediumLabel.classList.add("labelMedium");
+});
+
+hardInput.addEventListener("click", function () {
+  mediumLabel.classList.remove("labelMedium");
+  easyLabel.classList.remove("labelEasy");
+  hardLabel.classList.add("labelHard");
+});
+
+let questions;
+const fetchQ = async () => {
+  try {
+    const response = await fetch(`https://opentdb.com/api.php?amount=${takeOut}&category=18&difficulty=${takeOut2}`);
+    //console.log(response);
+    const data = await response.json();
+
+    questionsFullFill(data.results);
+    console.log(data.results);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const questionsFullFill = function (data) {
+  questions = data;
+  console.log(questions);
+
+  let arrayToString = JSON.stringify(questions);
+  localStorage.setItem("arrayToString", arrayToString);
+  console.log(arrayToString);
+  const time = document.getElementById("benchmarkTimer");
+  time.style.display = "block";
+  const footer = document.getElementsByTagName("footer")[0];
+  footer.style.display = "block";
+
+  cycleFunction();
+  testQuestionSkipper();
+  timerFunction();
+};
+
+const cycleFunction = function () {
+  //console.log(questions);
+  for (let i = 0; i < questions.length; i++) {
+    questions[i].incorrect_answers.push(questions[i].correct_answer);
+    allAnswer.push(questions[i].incorrect_answers);
+  }
+};
+
+let takeOut; //numero domande
+let takeOut2; //difficoltà
+const section = document.getElementById("formContainer");
+const form = document.getElementById("formid");
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  let numbOfQuestions = document.getElementById("numbOfQuestions");
+  takeOut = numbOfQuestions.value;
+  let radioChoice = document.querySelector('input[name="difficulty"]:checked')?.value;
+  takeOut2 = radioChoice;
+  //console.log(takeOut2);
+  //cambia con la nostra
+  localStorage.setItem("sharedData2", takeOut);
+  fetchQ();
+
+  //console.log(questions);
+});
+
+//console.log(questions);
 const allAnswer = [];
-for (let i = 0; i < questions.length; i++) {
-  questions[i].incorrect_answers.push(questions[i].correct_answer);
-  allAnswer.push(questions[i].incorrect_answers);
-}
+
 //console.log(allAnswer);
 
 const randomArrayPosition = function (arry) {
@@ -109,103 +107,42 @@ const question = document.getElementById("questionH1");
 const nextQuestionButton = document.getElementById("nextQuestionButton");
 let i = 0;
 
+const clicked = function () {
+  const selected = document.querySelector(".clickedButton");
+  if (selected) {
+    selected.classList.remove("clickedButton");
+  }
+};
+
 const testQuestionSkipper = function () {
   question.innerText = questions[i].question;
-  questionCounter.innerText = `QUESTION ${i + 1} / 10`;
+  questionCounter.innerText = `QUESTION ${i + 1} / ${questions.length}`;
   containerOfQuestionAnswerContainer.innerHTML = "";
   const rAP = randomArrayPosition(allAnswer[i]);
+  const questionAnswerContainer = document.createElement("div");
+  questionAnswerContainer.id = "benchmarkButtonsContainer";
+  containerOfQuestionAnswerContainer.appendChild(questionAnswerContainer);
+  if (rAP.length == 2) {
+    rAP.pop();
+    rAP.pop();
+    rAP.push("True");
+    rAP.push("False");
+  }
+  for (let j = 0; j < rAP.length; j++) {
+    const answerButton = document.createElement("button");
+    answerButton.classList.add("benchmarkAnswerButton");
+    questionAnswerContainer.appendChild(answerButton);
 
-  if (questions[i].type === "multiple") {
-    let answerButton1 = document.createElement("button");
-    let answerButton2 = document.createElement("button");
-    let answerButton3 = document.createElement("button");
-    let answerButton4 = document.createElement("button");
-    let questionAnswerContainer = document.createElement("div");
-
-    answerButton1.classList.add("benchmarkAnswerButton");
-    answerButton2.classList.add("benchmarkAnswerButton");
-    answerButton3.classList.add("benchmarkAnswerButton");
-    answerButton4.classList.add("benchmarkAnswerButton");
-    answerButton1.id = "benchmarkAnswerButton1";
-    answerButton2.id = "benchmarkAnswerButton2";
-    answerButton3.id = "benchmarkAnswerButton3";
-    answerButton4.id = "benchmarkAnswerButton4";
-    questionAnswerContainer.id = "benchmarkButtonsContainer";
-
-    answerButton1.addEventListener("click", function () {
-      answerButton1.classList.remove("clickedButton");
-      answerButton2.classList.remove("clickedButton");
-      answerButton3.classList.remove("clickedButton");
-      answerButton4.classList.remove("clickedButton");
-      answerButton1.classList.add("clickedButton");
+    answerButton.addEventListener("click", function () {
+      clicked();
+      answerButton.classList.add("clickedButton");
     });
-    answerButton2.addEventListener("click", function () {
-      answerButton1.classList.remove("clickedButton");
-      answerButton2.classList.remove("clickedButton");
-      answerButton3.classList.remove("clickedButton");
-      answerButton4.classList.remove("clickedButton");
-      answerButton2.classList.add("clickedButton");
-    });
-    answerButton3.addEventListener("click", function () {
-      answerButton1.classList.remove("clickedButton");
-      answerButton2.classList.remove("clickedButton");
-      answerButton3.classList.remove("clickedButton");
-      answerButton4.classList.remove("clickedButton");
-      answerButton3.classList.add("clickedButton");
-    });
-    answerButton4.addEventListener("click", function () {
-      answerButton1.classList.remove("clickedButton");
-      answerButton2.classList.remove("clickedButton");
-      answerButton3.classList.remove("clickedButton");
-      answerButton4.classList.remove("clickedButton");
-      answerButton4.classList.add("clickedButton");
-    });
-
-    answerButton1.innerText = rAP[0];
-    answerButton2.innerText = rAP[1];
-    answerButton3.innerText = rAP[2];
-    answerButton4.innerText = rAP[3];
-
-    containerOfQuestionAnswerContainer.appendChild(questionAnswerContainer);
-    questionAnswerContainer.appendChild(answerButton1);
-    questionAnswerContainer.appendChild(answerButton2);
-    questionAnswerContainer.appendChild(answerButton3);
-    questionAnswerContainer.appendChild(answerButton4);
-  } else {
-    let answerButtonBoolean1 = document.createElement("button");
-    let answerButtonBoolean2 = document.createElement("button");
-    let questionAnswerContainer = document.createElement("div");
-
-    answerButtonBoolean1.classList.add("benchmarkAnswerButton");
-    answerButtonBoolean2.classList.add("benchmarkAnswerButton");
-    answerButtonBoolean1.id = "benchmarkAnswerButton1";
-    answerButtonBoolean2.id = "benchmarkAnswerButton2";
-    questionAnswerContainer.id = "benchmarkButtonsContainer";
-
-    answerButtonBoolean1.addEventListener("click", function () {
-      answerButtonBoolean1.classList.remove("clickedButton");
-      answerButtonBoolean2.classList.remove("clickedButton");
-      answerButtonBoolean1.classList.add("clickedButton");
-    });
-    answerButtonBoolean2.addEventListener("click", function () {
-      answerButtonBoolean1.classList.remove("clickedButton");
-      answerButtonBoolean2.classList.remove("clickedButton");
-      answerButtonBoolean2.classList.add("clickedButton");
-    });
-
-    answerButtonBoolean1.innerText = "True";
-    answerButtonBoolean2.innerText = "False";
-    //console.log(answerButtonBoolean1);
-    //console.log(questionAnswerContainer);
-    containerOfQuestionAnswerContainer.appendChild(questionAnswerContainer);
-    questionAnswerContainer.appendChild(answerButtonBoolean1);
-    //console.log(questionAnswerContainer);
-    questionAnswerContainer.appendChild(answerButtonBoolean2);
+    answerButton.innerText = rAP[j];
   }
 };
 
 let correctAnswerCounter = 0;
-
+const userQ = [];
 const verifyAnswer = function () {
   let choosenAnswer = document.querySelector(".clickedButton");
   //console.log(questions[i].correct_answer);
@@ -213,6 +150,8 @@ const verifyAnswer = function () {
   if (!choosenAnswer) {
     return;
   } else {
+    userQ.push(choosenAnswer.innerText);
+
     if (choosenAnswer.innerText === questions[i].correct_answer) {
       correctAnswerCounter++;
       localStorage.setItem("sharedData", correctAnswerCounter);
@@ -220,20 +159,28 @@ const verifyAnswer = function () {
   }
 };
 
-nextQuestionButton.addEventListener("click", function () {
-  verifyAnswer();
+const redOrGreen = function () {
   let choosenAnswer = document.querySelector(".clickedButton");
+  if (!choosenAnswer) {
+    return;
+  }
   if (choosenAnswer.innerText === questions[i].correct_answer) {
     choosenAnswer.classList.add("correctAnswer");
   } else {
     choosenAnswer.classList.add("wrongAnswer");
   }
+};
+
+let userQToString;
+
+nextQuestionButton.addEventListener("click", function () {
+  //console.log("ciaooooo");
+  verifyAnswer();
+  redOrGreen();
   counter = 60;
   //console.log(correctAnswerCounter);
   i++;
-  if (i === 10) {
-    window.location.href = "resultsPage.html";
-  }
+  skipPage();
   setTimeout(() => {
     testQuestionSkipper();
   }, 500);
@@ -243,24 +190,34 @@ const colorChanging = document.getElementById("colorChanging");
 const seconds = document.getElementById("seconds");
 let counter = 60;
 
-setInterval(() => {
-  counter--;
-  colorChanging.style.background = `conic-gradient(#9A6A9E 0% ${100 - (counter / 60) * 100}%, #00ffff  ${100 - (counter / 60) * 100}% 100%)`;
-  //console.log(counter);
-  seconds.innerText = counter;
-  if (counter === 0) {
-    i++;
-    if (i === 10) {
-      window.location.href = "resultsPage.html";
+const timerFunction = function () {
+  setInterval(() => {
+    counter--;
+    colorChanging.style.background = `conic-gradient(#9A6A9E 0% ${100 - (counter / 60) * 100}%, #00ffff  ${100 - (counter / 60) * 100}% 100%)`;
+    //console.log(counter);
+    seconds.innerText = counter;
+    if (counter === 0) {
+      i++;
+      skipPage();
+      testQuestionSkipper();
+      counter = 60;
     }
-    testQuestionSkipper();
-    counter = 60;
+  }, 1000);
+};
+
+const skipPage = function () {
+  if (i === questions.length) {
+    const userQToString = JSON.stringify(userQ);
+    localStorage.setItem("userAnswer", userQToString);
+    console.log(userQToString);
+    window.location.href = "resultsPage.html";
   }
-}, 1000);
+};
 
 window.addEventListener("DOMContentLoaded", function () {
   localStorage.clear();
-  testQuestionSkipper();
+  //timerFunction();
+  //testQuestionSkipper();
 });
 
 //let gennaro = 3;
