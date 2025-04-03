@@ -30,6 +30,7 @@ const fetchQ = async () => {
     const response = await fetch(`https://opentdb.com/api.php?amount=${takeOut}&category=18&difficulty=${takeOut2}`);
     //console.log(response);
     const data = await response.json();
+
     questionsFullFill(data.results);
     console.log(data.results);
   } catch (error) {
@@ -44,6 +45,7 @@ const questionsFullFill = function (data) {
   time.style.display = "block";
   const footer = document.getElementsByTagName("footer")[0];
   footer.style.display = "block";
+
   cycleFunction();
   testQuestionSkipper();
   timerFunction();
@@ -69,6 +71,7 @@ form.addEventListener("submit", function (e) {
   takeOut2 = radioChoice;
   //console.log(takeOut2);
   //cambia con la nostra
+  localStorage.setItem("sharedData2", takeOut);
   fetchQ();
 
   //console.log(questions);
@@ -146,7 +149,6 @@ const verifyAnswer = function () {
     if (choosenAnswer.innerText === questions[i].correct_answer) {
       correctAnswerCounter++;
       localStorage.setItem("sharedData", correctAnswerCounter);
-      localStorage.setItem("questionsLenght", questions.lenght);
     }
   }
 };

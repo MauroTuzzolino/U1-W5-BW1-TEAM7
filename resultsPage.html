@@ -48,31 +48,36 @@
         <button id="send-button">RATE US</button>
       </div>
     </div>
+
+    <div id="containerOfTable"></div>
     <!--<script type="module" src="./assets/JavaScript/script.js"></script>-->
     <script>
       let recivedData = localStorage.getItem("sharedData");
+      let recivedData2 = localStorage.getItem("sharedData2");
       //console.log(recivedData);
       if (!recivedData) {
         recivedData = 0;
       }
 
       const correctPercentage = document.getElementById("correct-percentage");
-      correctPercentage.innerText = `${recivedData * 10}%`;
+      correctPercentage.innerText = `${((recivedData / recivedData2) * 100).toFixed(2)}%`;
 
       const correctQuestions = document.getElementById("correct-questions");
-      correctQuestions.innerText = `${recivedData}/10 questions`;
+      correctQuestions.innerText = `${recivedData}/${recivedData2} questions`;
 
       const wrongPercentage = document.getElementById("wrong-percentage");
-      wrongPercentage.innerText = `${(10 - recivedData) * 10}%`;
+      wrongPercentage.innerText = `${(((recivedData2 - recivedData) / recivedData2) * 100).toFixed(2)}%`;
 
       const wrongQuestions = document.getElementById("wrong-questions");
-      wrongQuestions.innerText = `${10 - recivedData}/10 questions`;
+      wrongQuestions.innerText = `${recivedData2 - recivedData}/${recivedData2} questions`;
 
       const donutResults = function () {
         const donut = document.getElementById("donut");
-        donut.style.background = `conic-gradient(#d20094 0% ${(10 - recivedData) * 10}%, #00ffff ${(10 - recivedData) * 10}% 100%)`;
+        donut.style.background = `conic-gradient(#d20094 0% ${((recivedData2 - recivedData) / recivedData2) * 100}%, #00ffff ${
+          ((recivedData2 - recivedData) / recivedData2) * 100
+        }% 100%)`;
 
-        if (10 - recivedData > recivedData) {
+        if (recivedData2 - recivedData > recivedData) {
           const donutTitle = document.getElementById("donut-title");
           donutTitle.innerText = "You failed!";
 
