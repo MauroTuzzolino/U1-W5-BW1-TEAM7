@@ -25,6 +25,10 @@ h6 {
 p,
 span,
 button,
-li {
+li,
+table,
+tr,
+th,
+td {
   font-family: Inter;
 }

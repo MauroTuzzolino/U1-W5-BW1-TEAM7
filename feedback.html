@@ -78,6 +78,7 @@
       const feedbackContainer = document.querySelector("main");
       const resultMessage = document.getElementById("result-message");
       const resultText = document.getElementById("result-text");
+      const mageImg = document.createElement("img");
 
       starForm.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -85,11 +86,19 @@
         feedbackContainer.style.display = "none";
 
         if (currentRating <= 3) {
-          resultText.innerText = "un voto cosi' basso?";
+          resultText.innerText =
+            "Thank you for participating.\nSorry you didn't like it.\nWe will do our best to improve the test, following your suggestions.";
+          mageImg.src = "./assets/img/coldFace.png";
+          resultMessage.append(mageImg);
         } else if (currentRating <= 7) {
-          resultText.innerText = "grazie per il feedback";
+          resultText.innerText = "Thank you for participating.\nWe will do our best to improve the test, following your suggestions.";
+          mageImg.src = "./assets/img/o7Img.png";
+          resultMessage.append(mageImg);
         } else {
-          resultText.innerText = "siamo contenti che ti sia piaciuto molto il nostro test";
+          resultText.innerText =
+            "Thank you for participating.\nWe are happy that you enjoyed our test.\nWe will continue to improve it to make it even better!";
+          mageImg.src = "./assets/img/magePng.png";
+          resultMessage.append(mageImg);
         }
 
         resultMessage.style.display = "block";
