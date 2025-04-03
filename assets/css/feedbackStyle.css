@@ -88,3 +88,7 @@ button {
   margin-top: 3.9rem;
   height: 25rem;
 }
+
+textarea:focus {
+  outline: none;
+}
