@@ -32,7 +32,10 @@
               <div id="donutTextContainer">
                 <h3 id="donut-title">Congratulations!</h3>
                 <h3 id="donut-result">You passed the exam.</h3>
-                <p id="donut-para">We'll send you the certificate in few minutes. Check your email (including promotions / spam folder)</p>
+                <p id="donut-para">
+                  We'll send you the certificate in few minutes. Check your email (including
+                  promotions / spam folder)
+                </p>
               </div>
             </div>
           </div>
@@ -45,7 +48,7 @@
         </div>
       </div>
       <div id="button-div">
-        <button id="send-button">RATE US</button>
+        <button id="send-button">RATE US <span id="star-span">★</span></button>
       </div>
     </div>
 
@@ -72,16 +75,18 @@
       correctQuestions.innerText = `${recivedData}/${recivedData2} questions`;
 
       const wrongPercentage = document.getElementById("wrong-percentage");
-      wrongPercentage.innerText = `${(((recivedData2 - recivedData) / recivedData2) * 100).toFixed(2)}%`;
+      wrongPercentage.innerText = `${(((recivedData2 - recivedData) / recivedData2) * 100).toFixed(
+        2
+      )}%`;
 
       const wrongQuestions = document.getElementById("wrong-questions");
       wrongQuestions.innerText = `${recivedData2 - recivedData}/${recivedData2} questions`;
 
       const donutResults = function () {
         const donut = document.getElementById("donut");
-        donut.style.background = `conic-gradient(#d20094 0% ${((recivedData2 - recivedData) / recivedData2) * 100}%, #00ffff ${
+        donut.style.background = `conic-gradient(#d20094 0% ${
           ((recivedData2 - recivedData) / recivedData2) * 100
-        }% 100%)`;
+        }%, #00ffff ${((recivedData2 - recivedData) / recivedData2) * 100}% 100%)`;
 
         if (recivedData2 - recivedData > recivedData) {
           const donutTitle = document.getElementById("donut-title");
@@ -91,7 +96,8 @@
           donutResult.innerText = "You haven't passed the exam.";
 
           const donutPara = document.getElementById("donut-para");
-          donutPara.innerText = "You failed so you won't receive our certificate. Check your e-mail for promotions and spams.";
+          donutPara.innerText =
+            "You failed so you won't receive our certificate. Check your e-mail for promotions and spams.";
         }
       };
 

@@ -133,6 +133,7 @@ p {
   font-size: large;
   padding: 1rem 3rem;
   font-weight: bold;
+  font-size: 1.2rem;
 }
 
 #send-button:hover {
@@ -178,4 +179,8 @@ td:not(:first-child) {
 
 .itsIncorrect {
   background-color: rgb(167, 13, 44);
+}
+#star-span {
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
 }
