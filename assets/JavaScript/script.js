@@ -41,6 +41,7 @@ const fetchQ = async () => {
 const questionsFullFill = function (data) {
   questions = data;
   console.log(questions);
+
   let arrayToString = JSON.stringify(questions);
   localStorage.setItem("arrayToString", arrayToString);
   console.log(arrayToString);
@@ -141,7 +142,7 @@ const testQuestionSkipper = function () {
 };
 
 let correctAnswerCounter = 0;
-
+const userQ = [];
 const verifyAnswer = function () {
   let choosenAnswer = document.querySelector(".clickedButton");
   //console.log(questions[i].correct_answer);
@@ -149,6 +150,8 @@ const verifyAnswer = function () {
   if (!choosenAnswer) {
     return;
   } else {
+    userQ.push(choosenAnswer.innerText);
+
     if (choosenAnswer.innerText === questions[i].correct_answer) {
       correctAnswerCounter++;
       localStorage.setItem("sharedData", correctAnswerCounter);
@@ -167,6 +170,8 @@ const redOrGreen = function () {
     choosenAnswer.classList.add("wrongAnswer");
   }
 };
+
+let userQToString;
 
 nextQuestionButton.addEventListener("click", function () {
   //console.log("ciaooooo");
@@ -195,7 +200,7 @@ const timerFunction = function () {
     seconds.innerText = counter;
     if (counter === 0) {
       i++;
-      if (i === 10) {
+      if (i === questions.length) {
         window.location.href = "resultsPage.html";
       }
       testQuestionSkipper();

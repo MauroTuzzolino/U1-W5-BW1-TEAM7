@@ -56,8 +56,9 @@
       let recivedData2 = localStorage.getItem("sharedData2");
       let arrayToString = localStorage.getItem("arrayToString");
       let stringToArray = JSON.parse(arrayToString);
-      console.log(stringToArray);
+      //console.log(stringToArray);
       //console.log(recivedData);
+
       if (!recivedData) {
         recivedData = 0;
       }
@@ -98,8 +99,61 @@
         window.location.href = "./feedback.html";
       });
 
+      const tableContainer = document.getElementById("containerOfTable");
+
+      const tableFunction = function () {
+        const table = document.createElement("table");
+        table.classList.add("table");
+
+        const thead = document.createElement("thead");
+        const headerRow = document.createElement("tr");
+
+        const col1 = document.createElement("th");
+        col1.textContent = "Question";
+        headerRow.appendChild(col1);
+
+        const col2 = document.createElement("th");
+        col2.textContent = "User Answer";
+        headerRow.appendChild(col2);
+
+        const col3 = document.createElement("th");
+        col3.textContent = "Corrects Answer";
+        headerRow.appendChild(col3);
+
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement("tbody");
+
+        stringToArray.forEach((item, index) => {
+          const tr = document.createElement("tr");
+
+          // Colonna 1
+          const td1 = document.createElement("td");
+          td1.textContent = `Riga ${index + 1}, Colonna 1`;
+          tr.appendChild(td1);
+
+          // Colonna 2
+          const td2 = document.createElement("td");
+          td2.textContent = `Riga ${index + 1}, Colonna 2`;
+          tr.appendChild(td2);
+
+          // Colonna 3
+          const td3 = document.createElement("td");
+          td3.textContent = item;
+          tr.appendChild(td3);
+
+          tbody.appendChild(tr);
+
+          table.appendChild(tbody);
+
+          tableContainer.appendChild(table);
+        });
+      };
+
       window.addEventListener("DOMContentLoaded", function () {
         donutResults();
+        tableFunction();
       });
     </script>
   </body>
