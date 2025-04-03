@@ -148,6 +148,7 @@ const verifyAnswer = function () {
   //console.log(questions[i].correct_answer);
   //console.log(choosenAnswer);
   if (!choosenAnswer) {
+    userQ.push("NOT ASWERED");
     return;
   } else {
     userQ.push(choosenAnswer.innerText);
