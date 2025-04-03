@@ -41,6 +41,9 @@ const fetchQ = async () => {
 const questionsFullFill = function (data) {
   questions = data;
   console.log(questions);
+  let arrayToString = JSON.stringify(questions);
+  localStorage.setItem("arrayToString", arrayToString);
+  console.log(arrayToString);
   const time = document.getElementById("benchmarkTimer");
   time.style.display = "block";
   const footer = document.getElementsByTagName("footer")[0];

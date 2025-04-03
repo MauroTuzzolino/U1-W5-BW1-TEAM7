@@ -54,6 +54,9 @@
     <script>
       let recivedData = localStorage.getItem("sharedData");
       let recivedData2 = localStorage.getItem("sharedData2");
+      let arrayToString = localStorage.getItem("arrayToString");
+      let stringToArray = JSON.parse(arrayToString);
+      console.log(stringToArray);
       //console.log(recivedData);
       if (!recivedData) {
         recivedData = 0;
