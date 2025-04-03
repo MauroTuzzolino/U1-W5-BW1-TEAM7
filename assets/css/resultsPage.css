@@ -171,3 +171,11 @@ td {
 td:not(:first-child) {
   text-align: center;
 }
+
+.itsCorrect {
+  background-color: rgb(8, 82, 8);
+}
+
+.itsIncorrect {
+  background-color: rgb(167, 13, 44);
+}

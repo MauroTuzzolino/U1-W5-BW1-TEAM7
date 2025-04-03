@@ -132,6 +132,11 @@ form {
   font-family: Inter;
 }
 
+form h2 {
+  font-size: 3rem;
+  margin-top: 0px;
+}
+
 form p {
   font-size: 2rem;
 }

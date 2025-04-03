@@ -103,6 +103,14 @@
 
       const tableContainer = document.getElementById("containerOfTable");
 
+      const correctIncorrect = function (td2, td3) {
+        if (td2.innerText === td3.innerText) {
+          td2.classList.add("itsCorrect");
+        } else {
+          td2.classList.add("itsIncorrect");
+        }
+      };
+
       const tableFunction = function () {
         const table = document.createElement("table");
         table.classList.add("table");
@@ -148,6 +156,8 @@
           tbody.appendChild(tr);
 
           table.appendChild(tbody);
+
+          correctIncorrect(td2, td3);
 
           tableContainer.appendChild(table);
         }
