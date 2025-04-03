@@ -1,10 +1,11 @@
 #logoContainer {
   display: inline-block;
-  padding: 60px 0px 0px 10%;
+  margin-left: 6rem;
+  padding-top: 4rem;
 }
 
 #logoContainer img {
-  height: 50px;
+  width: 200px;
 }
 #colorChanging {
   width: 200px;

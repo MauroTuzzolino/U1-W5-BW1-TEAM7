@@ -199,6 +199,7 @@ const timerFunction = function () {
     seconds.innerText = counter;
     if (counter === 0) {
       i++;
+      userQ.push("NOT ASWERED");
       skipPage();
       testQuestionSkipper();
       counter = 60;
