@@ -105,6 +105,9 @@ const questionCounter = document.getElementById("questionCounter");
 const containerOfQuestionAnswerContainer = document.getElementById("containerOfBenchmarkButtonsContainer");
 const question = document.getElementById("questionH1");
 const nextQuestionButton = document.getElementById("nextQuestionButton");
+// function sticazzi() {
+//   console.log("ciao");
+// }
 let i = 0;
 
 const clicked = function () {
@@ -115,6 +118,8 @@ const clicked = function () {
 };
 
 const testQuestionSkipper = function () {
+  nextQuestionButton.addEventListener("click", skipQuestion);
+
   question.innerText = questions[i].question;
   questionCounter.innerText = `QUESTION ${i + 1} / ${questions.length}`;
   containerOfQuestionAnswerContainer.innerHTML = "";
@@ -144,6 +149,8 @@ const testQuestionSkipper = function () {
 let correctAnswerCounter = 0;
 const userQ = [];
 const verifyAnswer = function () {
+  nextQuestionButton.removeEventListener("click", skipQuestion);
+
   let choosenAnswer = document.querySelector(".clickedButton");
   //console.log(questions[i].correct_answer);
   //console.log(choosenAnswer);
@@ -174,8 +181,8 @@ const redOrGreen = function () {
 
 let userQToString;
 
-nextQuestionButton.addEventListener("click", function () {
-  //console.log("ciaooooo");
+const skipQuestion = function () {
+  console.log("ciaooooo");
   verifyAnswer();
   redOrGreen();
   counter = 60;
@@ -185,7 +192,9 @@ nextQuestionButton.addEventListener("click", function () {
   setTimeout(() => {
     testQuestionSkipper();
   }, 500);
-});
+};
+
+nextQuestionButton.addEventListener("click", skipQuestion);
 
 const colorChanging = document.getElementById("colorChanging");
 const seconds = document.getElementById("seconds");
