@@ -31,6 +31,7 @@ const welcomePageFunction = function () {
   proceedForm.addEventListener("submit", function (e) {
     e.preventDefault();
     window.location.href = "benchmark-page.html";
+    promiseCheck.checked = false;
   });
 
   proceedButton.disabled = true;
@@ -67,12 +68,6 @@ const benchmarkFunction = function () {
     easyLabel.classList.remove("labelEasy");
     hardLabel.classList.add("labelHard");
   });
-
-  // function decodeStrangeCodes(string) {
-  //   return string.replace(/&#(\d+);/g, (match, code) => {
-  //     return String.fromCharCode(code);
-  //   });
-  // }
 
   let questions;
   const fetchQ = async () => {
@@ -155,7 +150,6 @@ const benchmarkFunction = function () {
   const containerOfQuestionAnswerContainer = document.getElementById("containerOfBenchmarkButtonsContainer");
   const question = document.getElementById("questionH1");
   const nextQuestionButton = document.getElementById("nextQuestionButton");
-  // function sticazzi() {
   //   console.log("ciao");
   // }
   let i = 0;
@@ -168,8 +162,6 @@ const benchmarkFunction = function () {
   };
 
   const testQuestionSkipper = function () {
-    nextQuestionButton.addEventListener("click", skipQuestion);
-
     question.innerText = decodeStrangeCodes(questions[i].question);
     questionCounter.innerText = `QUESTION ${i + 1} / ${questions.length}`;
     containerOfQuestionAnswerContainer.innerHTML = "";
@@ -178,10 +170,7 @@ const benchmarkFunction = function () {
     questionAnswerContainer.id = "benchmarkButtonsContainer";
     containerOfQuestionAnswerContainer.appendChild(questionAnswerContainer);
     if (rAP.length == 2) {
-      rAP.pop();
-      rAP.pop();
-      rAP.push("True");
-      rAP.push("False");
+      rAP.splice(0, rAP.length, "True", "False");
     }
     for (let j = 0; j < rAP.length; j++) {
       const answerButton = document.createElement("button");
@@ -194,6 +183,7 @@ const benchmarkFunction = function () {
       });
       answerButton.innerText = decodeStrangeCodes(rAP[j]);
     }
+    nextQuestionButton.addEventListener("click", skipQuestion);
   };
 
   let correctAnswerCounter = 0;
@@ -201,7 +191,7 @@ const benchmarkFunction = function () {
   const verifyAnswer = function () {
     nextQuestionButton.removeEventListener("click", skipQuestion);
 
-    let choosenAnswer = document.querySelector(".clickedButton");
+    const choosenAnswer = document.querySelector(".clickedButton");
     //console.log(questions[i].correct_answer);
     //console.log(choosenAnswer);
     if (!choosenAnswer) {
@@ -228,8 +218,6 @@ const benchmarkFunction = function () {
       choosenAnswer.classList.add("wrongAnswer");
     }
   };
-
-  let userQToString;
 
   const skipQuestion = function () {
     console.log("ciaooooo");
