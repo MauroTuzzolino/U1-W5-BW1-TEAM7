@@ -220,7 +220,8 @@ const benchmarkFunction = function () {
   };
 
   const skipQuestion = function () {
-    console.log("ciaooooo");
+    nextQuestionButton.classList.add("nextClicked");
+    // console.log("ciaooooo");
     verifyAnswer();
     redOrGreen();
     counter = 60;
@@ -228,6 +229,7 @@ const benchmarkFunction = function () {
     i++;
     skipPage();
     setTimeout(() => {
+      nextQuestionButton.classList.remove("nextClicked");
       testQuestionSkipper();
     }, 500);
   };

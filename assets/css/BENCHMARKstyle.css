@@ -108,6 +108,21 @@ main h1 {
 
 #nextQuestionButton {
   max-width: 300px;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: large;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+
+#nextQuestionButton:hover {
+  color: #00ffff;
+  border-color: #00ffff;
+}
+
+.nextClicked {
+  background: #014c96e0 !important;
 }
 
 #h2Div {
