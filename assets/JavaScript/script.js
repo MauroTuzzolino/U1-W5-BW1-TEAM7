@@ -40,7 +40,7 @@ const welcomePageFunction = function () {
   });
 };
 
-//PAGINA bBENCHMARK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//PAGINA BENCHMARK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 const benchmarkFunction = function () {
   const easyInput = document.getElementById("easyDiff");
@@ -450,17 +450,17 @@ const feedbackPageFunction = function () {
     feedbackContainer.style.display = "none";
 
     if (currentRating <= 3) {
-      resultText.innerText = "Thank you for participating";
+      resultText.innerText = "Thanks you for participating";
       paraText.innerText = "Sorry you didn't like it.\nWe will do our best to improve the test, following your suggestions.";
       mageImg.src = "./assets/img/coldFace.png";
       resultMessage.append(mageImg);
     } else if (currentRating <= 7) {
-      resultText.innerText = "Thank you for participating.";
+      resultText.innerText = "Thanks you for participating.";
       paraText.innerText = "We will do our best to improve the test,\nfollowing your suggestions.";
       mageImg.src = "./assets/img/o7Img.png";
       resultMessage.append(mageImg);
     } else {
-      resultText.innerText = "Thank you for participating.";
+      resultText.innerText = "Thanks you for participating.";
       paraText.innerText = "We are happy that you enjoyed our test.\nWe will continue to improve it to make it even better!";
       mageImg.src = "./assets/img/magePng.png";
       resultMessage.append(mageImg);
