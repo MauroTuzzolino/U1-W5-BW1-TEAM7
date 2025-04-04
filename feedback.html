@@ -40,76 +40,7 @@
     <h1 id="result-text"></h1>
     <h2 id="para-text"></h2>
   </div>
-  <script>
-    const stars = document.querySelectorAll("#star-rating span");
-    let currentRating = 0;
-
-    function updateRating(rating) {
-      for (let i = 0; i < stars.length; i++) {
-        const star = stars[i];
-        if (parseInt(star.getAttribute("data-value")) <= rating) {
-          star.classList.add("selected");
-        } else {
-          star.classList.remove("selected");
-        }
-      }
-    }
-
-    for (let i = 0; i < stars.length; i++) {
-      const star = stars[i];
-
-      star.addEventListener("mouseover", function () {
-        const rating = parseInt(star.getAttribute("data-value"));
-        updateRating(rating);
-        star.classList.add("hover");
-      });
-
-      star.addEventListener("mouseout", function () {
-        updateRating(currentRating);
-        for (let j = 0; j < stars.length; j++) {
-          stars[j].classList.remove("hover");
-        }
-      });
-
-      star.addEventListener("click", function () {
-        currentRating = parseInt(star.getAttribute("data-value"));
-        updateRating(currentRating);
-      });
-    }
-
-    const starForm = document.getElementById("star-form");
-    const feedbackContainer = document.querySelector("main");
-    const resultMessage = document.getElementById("result-message");
-    const resultText = document.getElementById("result-text");
-    const paraText = document.getElementById("para-text")
-    const mageImg = document.createElement("img");
-
-    starForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      feedbackContainer.style.display = "none";
-
-      if (currentRating <= 3) {
-        resultText.innerText = "Thank you for participating";
-        paraText.innerText = "Sorry you didn't like it.\nWe will do our best to improve the test, following your suggestions.";
-        mageImg.src = "./assets/img/coldFace.png";
-        resultMessage.append(mageImg);
-      } else if (currentRating <= 7) {
-        resultText.innerText = "Thank you for participating.";
-        paraText.innerText = "We will do our best to improve the test,\nfollowing your suggestions."
-        mageImg.src = "./assets/img/o7Img.png";
-        resultMessage.append(mageImg);
-      } else {
-        resultText.innerText = "Thank you for participating.";
-        paraText.innerText = "We are happy that you enjoyed our test.\nWe will continue to improve it to make it even better!"
-        mageImg.src = "./assets/img/magePng.png";
-        resultMessage.append(mageImg);
-      }
-
-      resultMessage.style.display = "block";
-    });
-  </script>
-  <!--<script type="module" src="./assets/JavaScript/script.js"></script>-->
+  <script src="./assets/JavaScript/script.js"></script>
 </body>
 
 </html>

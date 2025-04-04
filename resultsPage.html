@@ -1,176 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/resultsPage.css" />
-    <title>Results</title>
-  </head>
 
-  <body>
-    <div>
-      <img id="logo" src="./assets/img/epicode_logo.png" alt="logo epicode" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/resultsPage.css" />
+  <title>Results</title>
+</head>
+
+<body>
+  <div>
+    <img id="logo" src="./assets/img/epicode_logo.png" alt="logo epicode" />
+  </div>
+
+  <div class="content">
+    <div class="header">
+      <h1>Results</h1>
+      <p>The summary of your answers:</p>
     </div>
 
-    <div class="content">
-      <div class="header">
-        <h1>Results</h1>
-        <p>The summary of your answers:</p>
+    <div class="main">
+      <div class="result-block">
+        <h2>Correct</h2>
+        <h2 id="correct-percentage">66.7%</h2>
+        <p id="correct-questions"></p>
       </div>
 
-      <div class="main">
-        <div class="result-block">
-          <h2>Correct</h2>
-          <h2 id="correct-percentage">66.7%</h2>
-          <p id="correct-questions"></p>
-        </div>
-
-        <div class="result-block">
-          <div id="donut">
-            <div class="donut-center">
-              <div id="donutTextContainer">
-                <h3 id="donut-title">Congratulations!</h3>
-                <h3 id="donut-result">You passed the exam.</h3>
-                <p id="donut-para">We'll send you the certificate in few minutes. Check your email (including promotions / spam folder)</p>
-              </div>
+      <div class="result-block">
+        <div id="donut">
+          <div class="donut-center">
+            <div id="donutTextContainer">
+              <h3 id="donut-title">Congratulations!</h3>
+              <h3 id="donut-result">You passed the exam.</h3>
+              <p id="donut-para">We'll send you the certificate in few minutes. Check your email (including promotions /
+                spam folder)</p>
             </div>
           </div>
         </div>
-
-        <div class="result-block">
-          <h2>Wrong</h2>
-          <h2 id="wrong-percentage">33.3%</h2>
-          <p id="wrong-questions"><span>2/6</span> questions</p>
-        </div>
       </div>
-      <div id="button-div">
-        <button id="send-button">RATE US <span id="star-span">★</span></button>
+
+      <div class="result-block">
+        <h2>Wrong</h2>
+        <h2 id="wrong-percentage">33.3%</h2>
+        <p id="wrong-questions"><span>2/6</span> questions</p>
       </div>
     </div>
+    <div id="button-div">
+      <button id="send-button">RATE US <span id="star-span">★</span></button>
+    </div>
+  </div>
 
-    <div id="containerOfTable"></div>
-    <!--<script type="module" src="./assets/JavaScript/script.js"></script>-->
-    <script>
-      let recivedData = localStorage.getItem("sharedData");
-      let recivedData2 = localStorage.getItem("sharedData2");
-      let arrayToString = localStorage.getItem("arrayToString");
-      let stringToArray = JSON.parse(arrayToString);
-      //console.log(stringToArray);
-      //console.log(recivedData);
-      let userAnswer = localStorage.getItem("userAnswer");
-      let answerToArray = JSON.parse(userAnswer);
-      //console.log(answerToArray);
+  <div id="containerOfTable"></div>
+  <!--<script type="module" src="./assets/JavaScript/script.js"></script>-->
+  <script src="./assets/JavaScript/script.js">
 
-      if (!recivedData2) {
-        window.location.href = "./welcomePage.html";
-      }
-      if (!recivedData) {
-        recivedData = 0;
-      }
+  </script>
+</body>
 
-      const correctPercentage = document.getElementById("correct-percentage");
-      correctPercentage.innerText = `${((recivedData / recivedData2) * 100).toFixed(2)}%`;
-
-      const correctQuestions = document.getElementById("correct-questions");
-      correctQuestions.innerText = `${recivedData}/${recivedData2} questions`;
-
-      const wrongPercentage = document.getElementById("wrong-percentage");
-      wrongPercentage.innerText = `${(((recivedData2 - recivedData) / recivedData2) * 100).toFixed(2)}%`;
-
-      const wrongQuestions = document.getElementById("wrong-questions");
-      wrongQuestions.innerText = `${recivedData2 - recivedData}/${recivedData2} questions`;
-
-      const donutResults = function () {
-        const donut = document.getElementById("donut");
-        donut.style.background = `conic-gradient(#d20094 0% ${((recivedData2 - recivedData) / recivedData2) * 100}%, #00ffff ${
-          ((recivedData2 - recivedData) / recivedData2) * 100
-        }% 100%)`;
-
-        if (recivedData2 - recivedData > recivedData) {
-          const donutTitle = document.getElementById("donut-title");
-          donutTitle.innerText = "You failed!";
-
-          const donutResult = document.getElementById("donut-result");
-          donutResult.innerText = "You haven't passed the exam.";
-
-          const donutPara = document.getElementById("donut-para");
-          donutPara.innerText = "You failed so you won't receive our certificate. Check your e-mail for promotions and spams.";
-        }
-      };
-
-      const sendButton = document.getElementById("send-button");
-      sendButton.addEventListener("click", function (e) {
-        e.preventDefault();
-        window.location.href = "./feedback.html";
-      });
-
-      const tableContainer = document.getElementById("containerOfTable");
-
-      const correctIncorrect = function (td2, td3) {
-        if (td2.innerText === td3.innerText) {
-          td2.classList.add("itsCorrect");
-        } else {
-          td2.classList.add("itsIncorrect");
-        }
-      };
-
-      const tableFunction = function () {
-        const table = document.createElement("table");
-        table.classList.add("table");
-
-        const thead = document.createElement("thead");
-        const headerRow = document.createElement("tr");
-
-        const col1 = document.createElement("th");
-        col1.textContent = "Question";
-        headerRow.appendChild(col1);
-
-        const col2 = document.createElement("th");
-        col2.textContent = "User Answer";
-        headerRow.appendChild(col2);
-
-        const col3 = document.createElement("th");
-        col3.textContent = "Corrects Answer";
-        headerRow.appendChild(col3);
-
-        thead.appendChild(headerRow);
-        table.appendChild(thead);
-
-        const tbody = document.createElement("tbody");
-
-        for (let i = 0; i < stringToArray.length; i++) {
-          const tr = document.createElement("tr");
-
-          // Colonna 1
-          const td1 = document.createElement("td");
-          td1.textContent = stringToArray[i].question;
-          tr.appendChild(td1);
-
-          // Colonna 2
-          const td2 = document.createElement("td");
-          td2.textContent = answerToArray[i];
-          tr.appendChild(td2);
-
-          // Colonna 3
-          const td3 = document.createElement("td");
-          td3.textContent = stringToArray[i].correct_answer;
-          tr.appendChild(td3);
-
-          tbody.appendChild(tr);
-
-          table.appendChild(tbody);
-
-          correctIncorrect(td2, td3);
-
-          tableContainer.appendChild(table);
-        }
-      };
-
-      window.addEventListener("DOMContentLoaded", function () {
-        donutResults();
-        tableFunction();
-      });
-    </script>
-  </body>
 </html>
