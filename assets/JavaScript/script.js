@@ -1,5 +1,26 @@
 console.log(window);
 
+function decodeStrangeCodes(str) {
+  const entities = {
+    quot: '"',
+    amp: "&",
+    lt: "<",
+    gt: ">",
+    apos: "'",
+    nbsp: "\u00A0",
+    copy: "©",
+    reg: "®",
+    euro: "€",
+    hellip: "…",
+    trade: "™",
+  };
+
+  return str
+    .replace(/&#(\d+);/g, (_, d) => String.fromCharCode(d))
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, h) => String.fromCharCode(parseInt(h, 16)))
+    .replace(/&([a-zA-Z]+);/g, (_, name) => entities[name] || `&${name};`);
+}
+
 //PAGINA WELCOME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 const welcomePageFunction = function () {
@@ -46,6 +67,12 @@ const benchmarkFunction = function () {
     easyLabel.classList.remove("labelEasy");
     hardLabel.classList.add("labelHard");
   });
+
+  // function decodeStrangeCodes(string) {
+  //   return string.replace(/&#(\d+);/g, (match, code) => {
+  //     return String.fromCharCode(code);
+  //   });
+  // }
 
   let questions;
   const fetchQ = async () => {
@@ -143,7 +170,7 @@ const benchmarkFunction = function () {
   const testQuestionSkipper = function () {
     nextQuestionButton.addEventListener("click", skipQuestion);
 
-    question.innerText = questions[i].question;
+    question.innerText = decodeStrangeCodes(questions[i].question);
     questionCounter.innerText = `QUESTION ${i + 1} / ${questions.length}`;
     containerOfQuestionAnswerContainer.innerHTML = "";
     const rAP = randomArrayPosition(allAnswer[i]);
@@ -165,7 +192,7 @@ const benchmarkFunction = function () {
         clicked();
         answerButton.classList.add("clickedButton");
       });
-      answerButton.innerText = rAP[j];
+      answerButton.innerText = decodeStrangeCodes(rAP[j]);
     }
   };
 
@@ -183,7 +210,7 @@ const benchmarkFunction = function () {
     } else {
       userQ.push(choosenAnswer.innerText);
 
-      if (choosenAnswer.innerText === questions[i].correct_answer) {
+      if (choosenAnswer.innerText === decodeStrangeCodes(questions[i].correct_answer)) {
         correctAnswerCounter++;
         localStorage.setItem("sharedData", correctAnswerCounter);
       }
@@ -352,7 +379,7 @@ const resultPageFunction = function () {
 
       // Colonna 1
       const td1 = document.createElement("td");
-      td1.textContent = stringToArray[i].question;
+      td1.textContent = decodeStrangeCodes(stringToArray[i].question);
       tr.appendChild(td1);
 
       // Colonna 2
@@ -362,7 +389,7 @@ const resultPageFunction = function () {
 
       // Colonna 3
       const td3 = document.createElement("td");
-      td3.textContent = stringToArray[i].correct_answer;
+      td3.textContent = decodeStrangeCodes(stringToArray[i].correct_answer);
       tr.appendChild(td3);
 
       tbody.appendChild(tr);
