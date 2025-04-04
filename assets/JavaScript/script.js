@@ -32,7 +32,7 @@ const fetchQ = async () => {
     const data = await response.json();
 
     questionsFullFill(data.results);
-    console.log(data.results);
+    //console.log(data.results);
   } catch (error) {
     console.log(error);
   }
@@ -40,11 +40,11 @@ const fetchQ = async () => {
 
 const questionsFullFill = function (data) {
   questions = data;
-  console.log(questions);
+  //console.log(questions);
 
   let arrayToString = JSON.stringify(questions);
   localStorage.setItem("arrayToString", arrayToString);
-  console.log(arrayToString);
+  //console.log(arrayToString);
   const time = document.getElementById("benchmarkTimer");
   time.style.display = "block";
   const footer = document.getElementsByTagName("footer")[0];
@@ -211,7 +211,7 @@ const skipPage = function () {
   if (i === questions.length) {
     const userQToString = JSON.stringify(userQ);
     localStorage.setItem("userAnswer", userQToString);
-    console.log(userQToString);
+    //console.log(userQToString);
     window.location.href = "resultsPage.html";
   }
 };
